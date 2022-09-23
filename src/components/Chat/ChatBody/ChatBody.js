@@ -5,6 +5,7 @@ import { useAuth } from "../../../Hooks/AuthHooks";
 import AvatarAction from "../../../action/AvatarAction";
 import ChatAction from "../../../action/ChatAction";
 import UserAction from "../../../action/UserAction";
+import LastOnlineAction from "../../../action/LastOnlineAction";
 
 import Picker from "emoji-picker-react";
 
@@ -42,21 +43,6 @@ const ChatBody = (props) => {
         messageInput.innerText = "";
     }, [currentUser, userCompanion]);
 
-    const getLastOnline = (time) => {
-        let hours = new Date(time).getHours();
-        let minute = new Date(time).getMinutes();
-        let day = new Date(time).getDate();
-        let month = new Date(time).getMonth() + 1;
-        let year = new Date(time).getFullYear();
-        console.log(day + "." + month + "." + year);
-        const lastOnlineText = "last online in ";
-        if (minute < 10) {
-            minute = "0" + minute;
-        }
-
-        return lastOnlineText + hours + ":" + minute;
-    };
-
     // const onEmojiClick = (event, emojiObject) => {
     //     const messageInput = document.getElementById("message-input");
     //     setChosenEmoji(chosenEmoji);
@@ -77,7 +63,6 @@ const ChatBody = (props) => {
             messageInput.dataset.placeholder = "Type a message here";
             messageInput.innerText = "";
         } else {
-            // console.log("нельзя отправлять пустое сообщение");
             messageInput.dataset.placeholder = "Сan't send empty message";
         }
     };
@@ -109,7 +94,7 @@ const ChatBody = (props) => {
                             <div className={styles["info-actions"]}>
                                 {userCompanion[0].online
                                     ? "online"
-                                    : getLastOnline(userCompanion[0].lastOnline)}
+                                    : LastOnlineAction.getLastOnline(userCompanion[0].lastOnline)}
                             </div>
                         </div>
                     </div>
