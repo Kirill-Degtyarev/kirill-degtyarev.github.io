@@ -24,12 +24,12 @@ export default class LastOnlineAction {
                 : lastOnlineDate.getMinutes();
         const lastOnlineDay = lastOnlineDate.getDate();
         // eslint-disable-next-line
-        const lastOnlineMonth =
-            lastOnlineDate.getMonth() + 1 > 10
-                ? lastOnlineDate.getMonth() + 1
-                : "0" + +(lastOnlineDate.getMonth() + 1);
+        // const lastOnlineMonth =
+        //     lastOnlineDate.getMonth() + 1 > 10
+        //         ? lastOnlineDate.getMonth() + 1
+        //         : "0" + +(lastOnlineDate.getMonth() + 1);
         // eslint-disable-next-line
-        const lastOnlineYear = lastOnlineDate.getFullYear();
+        // const lastOnlineYear = lastOnlineDate.getFullYear();
 
         const differenceOfHours = currentHours - lastOnlineHours;
         const differenceOfDays = currentDay - lastOnlineDay;
