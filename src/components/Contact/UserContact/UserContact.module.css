@@ -1,0 +1,82 @@
+.user-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 0px 10px 55px rgb(0 0 0 / 5%);
+}
+
+.user-container:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.user-container__info {
+    display: flex;
+    align-items: center;
+}
+
+.user__avatar {
+    position: relative;
+    margin-right: 20px;
+}
+
+.user-avatar__online {
+    position: absolute;
+    display: block;
+    top: 3px;
+    left: 3px;
+    background-color: #00c305;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    border: 1.5px solid #ffffff;
+}
+
+.user-avatarName {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(325.78deg, #2a8bf2 14.76%, #7cb8f7 87.3%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 20px;
+    user-select: none;
+    text-transform: uppercase;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    user-select: none;
+}
+
+.user__userName {
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: capitalize;
+    color: #0d1c2e;
+    margin-right: 20px;
+}
+
+.user__userEmail {
+    cursor: pointer;
+}
+
+.user-container__button {
+    background: linear-gradient(325.78deg, #2a8bf2 14.76%, #7cb8f7 87.3%);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+}

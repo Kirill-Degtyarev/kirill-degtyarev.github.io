@@ -1,0 +1,22 @@
+.app-body {
+    display: flex;
+}
+
+.app-body__outlet {
+    padding: 45px 62px 0px 37px;
+    width: 100%;
+}
+
+.container-loader {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1600px) {
+    .app-body__outlet {
+        padding: 20px 20px 0px 20px;
+    }
+}

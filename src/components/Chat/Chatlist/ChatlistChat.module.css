@@ -1,0 +1,221 @@
+.chatlist-chat {
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0px 10px 55px rgba(0, 0, 0, 0.05);
+    padding: 35px 30px 32px 30px;
+    cursor: pointer;
+    display: flex;
+    min-width: 100%;
+    flex-direction: column;
+    transition: 0.3s ease all;
+    position: relative;
+}
+
+.chatlist-active::after {
+    opacity: 1 !important;
+}
+
+.chatlist-chat::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* z-index: -1; */
+    border-radius: 6px;
+    background: linear-gradient(96.78deg, #7cb8f7 0%, #2a8bf2 100%);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+/* .chatlist-chat:hover::after {
+    opacity: 1;
+} */
+
+.chatlist-chat:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.chatlist-chat__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.chatlist-chat__header:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.chat-userinfo {
+    display: flex;
+    align-items: center;
+}
+
+.chat-avatar {
+    position: relative;
+    margin-right: 20px;
+}
+
+.chat-avatar__online {
+    position: absolute;
+    display: block;
+    top: 3px;
+    left: 3px;
+    background-color: #00c305;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    border: 1.5px solid #ffffff;
+}
+
+.chat-avatar__img {
+}
+
+.chat-avatar__img img {
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+}
+
+.chat-avatarName {
+    width: 54px;
+    height: 54px;
+    background: linear-gradient(325.78deg, #2a8bf2 14.76%, #7cb8f7 87.3%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 20px;
+    user-select: none;
+    text-transform: uppercase;
+}
+
+.chat-info {
+}
+
+.chat-info__username {
+    font-size: 18px;
+    line-height: 117%;
+    text-transform: capitalize;
+    color: #0d1c2e;
+    font-weight: 600;
+    /* transition: 0.3s ease all; */
+}
+
+.chat-info__actions {
+    display: flex;
+    align-items: center;
+}
+
+.action {
+}
+
+.action-img {
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.action-title {
+    font-size: 16px;
+    line-height: 119%;
+    text-transform: lowercase;
+    color: #2a8bf2;
+}
+
+.last-messages {
+    font-size: 16px;
+    line-height: 119%;
+    text-transform: lowercase;
+    color: #707c97;
+}
+
+/* ! */
+.chatlist-chat__messages {
+    position: relative;
+    z-index: 2;
+}
+
+.message {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+.chat-messages {
+    display: -webkit-box;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -ms-line-clamp: 3;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    word-wrap: break-word;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    font-size: 16px;
+    line-height: 120%;
+    color: #707c97;
+    max-width: 450px;
+}
+
+.chat-messages__voice {
+    display: flex;
+    align-items: center;
+}
+
+.messages-voice_img {
+    margin-right: 6px;
+    padding: 1.17px 2.92px;
+}
+
+.messages-count {
+    height: 20px;
+    min-width: 20px;
+    padding: 3px 0px 5px 0px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #ff3366;
+    box-shadow: 4px 4px 15px rgba(198, 27, 74, 0.05), 2px 2px 10px rgba(198, 27, 74, 0.1),
+        1px 1px 50px rgba(198, 27, 74, 0.15);
+}
+
+.messages-count span {
+    font-size: 13px;
+    line-height: 115%;
+    text-transform: lowercase;
+    color: #ffffff;
+}
+
+.message-file {
+    display: flex;
+    align-items: center;
+    margin-top: 13px;
+}
+
+@media (max-width: 1440px) {
+    .chatlist-chat {
+        padding: 20px 15px 20px 15px;
+    }
+    .chat-avatar__online {
+        top: 1px;
+        left: 1px;
+    }
+
+    .chat-avatar__img img {
+        width: 40px;
+        height: 40px;
+    }
+    .chat-avatarName {
+        width: 40px;
+        height: 40px;
+    }
+}

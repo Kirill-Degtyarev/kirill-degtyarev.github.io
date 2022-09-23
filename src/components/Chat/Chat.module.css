@@ -1,0 +1,9 @@
+.chat-body {
+    display: flex;
+    gap: 52px;
+}
+@media (max-width: 1600px) {
+    .chat-body {
+        gap: 20px;
+    }
+}

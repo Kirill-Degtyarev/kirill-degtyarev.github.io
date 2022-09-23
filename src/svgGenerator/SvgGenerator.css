@@ -1,0 +1,519 @@
+.arrow-down {
+    width: 13px;
+    height: 7px;
+    transform: rotate(0deg);
+}
+
+.home {
+    filter: drop-shadow(1px 2px 1px rgb(0 0 0 / 0.4));
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-transition: filter 0.4s ease;
+    -moz-transition: filter 0.4s ease;
+    -o-transition: filter 0.4s ease;
+    transition: filter 0.4s ease;
+}
+
+.home:hover {
+    filter: drop-shadow(1px 2px 1px #7cb8f7);
+}
+
+.chat {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    filter: drop-shadow(1px 2px 1px rgb(0 0 0 / 0.4));
+    display: inline-block;
+    -webkit-transition: filter 0.4s ease;
+    -moz-transition: filter 0.4s ease;
+    -o-transition: filter 0.4s ease;
+    transition: filter 0.4s ease;
+}
+
+.chat:hover {
+    filter: drop-shadow(1px 2px 1px #7cb8f7);
+}
+
+.gradient {
+    opacity: 0;
+    display: inline-block;
+    -webkit-transition: opacity 0.4s ease;
+    -moz-transition: opacity 0.4s ease;
+    -o-transition: opacity 0.4s ease;
+    transition: opacity 0.4s ease;
+}
+.gradient:hover {
+    opacity: 1;
+}
+
+.contact {
+    filter: drop-shadow(1px 2px 1px rgb(0 0 0 / 0.4));
+    width: 14px;
+    height: 18px;
+    display: inline-block;
+    cursor: pointer;
+
+    -webkit-transition: filter 0.4s ease;
+    -moz-transition: filter 0.4s ease;
+    -o-transition: filter 0.4s ease;
+    transition: filter 0.4s ease;
+}
+
+.contact:hover {
+    filter: drop-shadow(1px 2px 1px #7cb8f7);
+}
+
+.notifications {
+    filter: drop-shadow(1px 2px 1px rgb(0 0 0 / 0.4));
+    width: 18px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+
+    -webkit-transition: filter 0.4s ease;
+    -moz-transition: filter 0.4s ease;
+    -o-transition: filter 0.4s ease;
+    transition: filter 0.4s ease;
+}
+
+.notifications:hover {
+    filter: drop-shadow(1px 2px 1px #7cb8f7);
+}
+
+.calendar {
+    filter: drop-shadow(1px 2px 1px rgb(0 0 0 / 0.4));
+    width: 18px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+
+    -webkit-transition: filter 0.4s ease;
+    -moz-transition: filter 0.4s ease;
+    -o-transition: filter 0.4s ease;
+    transition: filter 0.4s ease;
+}
+
+.calendar:hover {
+    filter: drop-shadow(1px 2px 1px #7cb8f7);
+}
+
+.settings {
+    filter: drop-shadow(1px 2px 1px rgb(0 0 0 / 0.4));
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+
+    -webkit-transition: filter 0.4s ease;
+    -moz-transition: filter 0.4s ease;
+    -o-transition: filter 0.4s ease;
+    transition: filter 0.4s ease;
+}
+
+.settings:hover {
+    filter: drop-shadow(1px 2px 1px #7cb8f7);
+}
+
+.logout {
+    filter: drop-shadow(1px 2px 1px rgb(0 0 0 / 0.4));
+    width: 20px;
+    height: 21px;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-transition: filter 0.4s ease;
+    -moz-transition: filter 0.4s ease;
+    -o-transition: filter 0.4s ease;
+    transition: filter 0.4s ease;
+}
+
+.logout path {
+    transition: 0.3s ease all;
+}
+
+.logout:hover {
+    filter: drop-shadow(1px 2px 1px #7cb8f7);
+}
+
+.active-icon {
+    filter: drop-shadow(1px 2px 1px #7cb8f7);
+}
+
+.active-icon g rect:last-child {
+    opacity: 1 !important ;
+}
+
+.plus {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+.search {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.writes {
+    width: 15px;
+    height: 5px;
+    display: inline-block;
+}
+
+.voice {
+    display: inline-block;
+    width: 10px;
+    height: 12px;
+    cursor: pointer;
+}
+
+.recording-voice {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}
+
+.file {
+    display: inline-block;
+    width: 14px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.photo {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+@-webkit-keyframes animate-svg-fill-1 {
+    0% {
+        cy: 3.5;
+    }
+    12.5% {
+        cy: 3;
+    }
+    25% {
+        cy: 2.5;
+    }
+    37.5% {
+        cy: 2;
+    }
+    50% {
+        cy: 1.5;
+    }
+    62.5% {
+        cy: 2;
+    }
+    75% {
+        cy: 2.5;
+    }
+    87.5% {
+        cy: 3;
+    }
+    100% {
+        cy: 3.5;
+    }
+}
+
+@keyframes animate-svg-fill-1 {
+    0% {
+        cy: 3.5;
+    }
+    12.5% {
+        cy: 3;
+    }
+    25% {
+        cy: 2.5;
+    }
+    37.5% {
+        cy: 2;
+    }
+    50% {
+        cy: 1.5;
+    }
+    62.5% {
+        cy: 2;
+    }
+    75% {
+        cy: 2.5;
+    }
+    87.5% {
+        cy: 3;
+    }
+    100% {
+        cy: 3.5;
+    }
+}
+
+.svg-elem-1 {
+    -webkit-animation: animate-svg-fill-1 0.7s ease-in 0.9s both;
+    animation: animate-svg-fill-1 0.7s ease-in 0.9s both;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes animate-svg-fill-2 {
+    0% {
+        cy: 1.5;
+    }
+    12.5% {
+        cy: 2;
+    }
+    25% {
+        cy: 2.5;
+    }
+    37.5% {
+        cy: 3;
+    }
+    50% {
+        cy: 3.5;
+    }
+    62.5% {
+        cy: 3;
+    }
+    75% {
+        cy: 2.5;
+    }
+    87.5% {
+        cy: 2;
+    }
+    100% {
+        cy: 1.5;
+    }
+}
+
+@keyframes animate-svg-fill-2 {
+    0% {
+        cy: 1.5;
+    }
+    12.5% {
+        cy: 2;
+    }
+    25% {
+        cy: 2.5;
+    }
+    37.5% {
+        cy: 3;
+    }
+    50% {
+        cy: 3.5;
+    }
+    62.5% {
+        cy: 3;
+    }
+    75% {
+        cy: 2.5;
+    }
+    87.5% {
+        cy: 2;
+    }
+    100% {
+        cy: 1.5;
+    }
+}
+
+.svg-elem-2 {
+    -webkit-animation: animate-svg-fill-2 0.7s ease-in 0.9s both;
+    animation: animate-svg-fill-2 0.7s ease-in 0.9s both;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes animate-svg-fill-3 {
+    0% {
+        cy: 3.5;
+    }
+    12.5% {
+        cy: 3;
+    }
+    25% {
+        cy: 2.5;
+    }
+    37.5% {
+        cy: 2;
+    }
+    50% {
+        cy: 1.5;
+    }
+    62.5% {
+        cy: 2;
+    }
+    75% {
+        cy: 2.5;
+    }
+    87.5% {
+        cy: 3;
+    }
+    100% {
+        cy: 3.5;
+    }
+}
+
+@keyframes animate-svg-fill-3 {
+    0% {
+        cy: 3.5;
+    }
+    12.5% {
+        cy: 3;
+    }
+    25% {
+        cy: 2.5;
+    }
+    37.5% {
+        cy: 2;
+    }
+    50% {
+        cy: 1.5;
+    }
+    62.5% {
+        cy: 2;
+    }
+    75% {
+        cy: 2.5;
+    }
+    87.5% {
+        cy: 3;
+    }
+    100% {
+        cy: 3.5;
+    }
+}
+
+.svg-elem-3 {
+    -webkit-animation: animate-svg-fill-3 0.7s ease-in 0.9s both;
+    animation: animate-svg-fill-3 0.7s ease-in 0.9s both;
+    animation-iteration-count: infinite;
+}
+
+.recording-voice {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.recording-voice__animated1 {
+    -webkit-animation: animated-recording1 0.7s ease-in 0.9s both;
+    animation: animated-recording1 0.7s ease-in 0.9s both;
+    animation-iteration-count: infinite;
+}
+
+@keyframes animated-recording1 {
+    0% {
+        r: 2;
+    }
+    12.5% {
+        r: 3;
+    }
+    25% {
+        r: 4;
+    }
+    37.5% {
+        r: 5;
+    }
+    50% {
+        r: 6;
+    }
+    62.5% {
+        r: 5;
+    }
+    75% {
+        r: 4;
+    }
+    87.5% {
+        r: 3;
+    }
+    100% {
+        r: 2;
+    }
+}
+
+@-webkit-keyframes animated-recording1 {
+    0% {
+        r: 2;
+    }
+    12.5% {
+        r: 3;
+    }
+    25% {
+        r: 4;
+    }
+    37.5% {
+        r: 5;
+    }
+    50% {
+        r: 6;
+    }
+    62.5% {
+        r: 5;
+    }
+    75% {
+        r: 4;
+    }
+    87.5% {
+        r: 3;
+    }
+    100% {
+        r: 2;
+    }
+}
+
+.clip {
+    display: inline-block;
+    cursor: pointer;
+    width: 20px;
+    height: 21px;
+}
+
+.dots {
+    display: inline-block;
+    cursor: pointer;
+    width: 5px;
+    height: 20px;
+}
+
+.file-add {
+    width: 17px;
+    height: 22px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.photo-add {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.video-add {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.send {
+    display: inline-block;
+    cursor: pointer;
+    width: 17px;
+    height: 16px;
+}
+
+.smile {
+    display: inline-block;
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+}
+
+.camera_light {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: inline-block;
+}
