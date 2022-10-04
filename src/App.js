@@ -20,7 +20,7 @@ import "./fonts/fonts.css";
 
 function App() {
     const [userIsLoged, setUserLogeed] = useState(false);
-    const path = process.env.REACT_APP_FOR_PATH;
+    // const path = process.env.REACT_APP_FOR_PATH;
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -49,7 +49,7 @@ function App() {
 
     return (
         <Routes>
-            {userIsLoged ? (
+            {/* {userIsLoged ? (
                 <Route path={path + "/"} element={<AppBody logoutHandler={logoutHandler} />}>
                     <Route index path={path + "home"} element={<Home />} />
                     <Route path={path + "chat/*"} element={<Chat />} />
@@ -68,8 +68,8 @@ function App() {
                     />
                     <Route path={path + "*"} element={<NotFound />} />
                 </>
-            )}
-            {/* {userIsLoged ? (
+            )} */}
+            {userIsLoged ? (
                 <Route path="/" element={<AppBody logoutHandler={logoutHandler} />}>
                     <Route index path="home" element={<Home />} />
                     <Route path="chat/*" element={<Chat />} />
@@ -85,7 +85,7 @@ function App() {
                     <Route path="/registration" element={<Registration userLoged={userLoged} />} />
                     <Route path="*" element={<NotFound />} />
                 </>
-            )} */}
+            )}
         </Routes>
     );
 }
