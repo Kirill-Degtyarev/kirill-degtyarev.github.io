@@ -20,12 +20,10 @@ import "./fonts/fonts.css";
 
 function App() {
     const [userIsLoged, setUserLogeed] = useState(false);
-    // const path = process.env.REACT_APP_FOR_PATH;
     const navigate = useNavigate();
 
     useEffect(() => {
         const storedLoginInfo = localStorage.getItem("isLogedIn");
-
         if (storedLoginInfo === "1") {
             setUserLogeed(true);
         } else {
@@ -49,41 +47,21 @@ function App() {
 
     return (
         <Routes>
-            {/* {userIsLoged ? (
-                <Route path={path + "/"} element={<AppBody logoutHandler={logoutHandler} />}>
-                    <Route index path={path + "home"} element={<Home />} />
-                    <Route path={path + "chat/*"} element={<Chat />} />
-                    <Route path={path + "contact"} element={<Contact />} />
-                    <Route path={path + "notifications"} element={<Notifications />} />
-                    <Route path={path + "calendar"} element={<Calendar />} />
-                    <Route path={path + "settings"} element={<Settings />} />
-                    <Route path={path + "*"} element={<NotFound />} />
-                </Route>
-            ) : (
-                <>
-                    <Route path={path + "/login"} element={<LoginBody userLoged={userLoged} />} />
-                    <Route
-                        path={path + "/registration"}
-                        element={<Registration userLoged={userLoged} />}
-                    />
-                    <Route path={path + "*"} element={<NotFound />} />
-                </>
-            )} */}
             {userIsLoged ? (
                 <Route path="/" element={<AppBody logoutHandler={logoutHandler} />}>
-                    <Route index path="home" element={<Home />} />
-                    <Route path="chat/*" element={<Chat />} />
-                    <Route path="contact" element={<Contact />} />
-                    <Route path="notifications" element={<Notifications />} />
-                    <Route path="calendar" element={<Calendar />} />
-                    <Route path="settings" element={<Settings />} />
-                    <Route path="*" element={<NotFound />} />
+                    <Route index path="/home" element={<Home />} />
+                    <Route path="/chat/*" element={<Chat />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/notifications" element={<Notifications />} />
+                    <Route path="/calendar" element={<Calendar />} />
+                    <Route path="/settings" element={<Settings />} />
+                    <Route path="/*" element={<NotFound />} />
                 </Route>
             ) : (
                 <>
                     <Route path="/login" element={<LoginBody userLoged={userLoged} />} />
                     <Route path="/registration" element={<Registration userLoged={userLoged} />} />
-                    <Route path="*" element={<NotFound />} />
+                    <Route path="/*" element={<NotFound />} />
                 </>
             )}
         </Routes>
