@@ -71,7 +71,7 @@ const LoginBody = (props) => {
                                 autoComplete="current-password"
                                 onChange={(e) => setUserPassword(e.target.value)}
                             />
-                            <span className={styles["password__input-icon"]}></span>
+                            {/* <span className={styles["password__input-icon"]}></span> */}
                         </div>
                         <div className={styles["autorization__form-remeber"]}>
                             {/* <label>
