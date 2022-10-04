@@ -20,7 +20,7 @@ import "./fonts/fonts.css";
 
 function App() {
     const [userIsLoged, setUserLogeed] = useState(false);
-    // const path = process.env.REACT_APP_FOR_PATH;
+    const path = process.env.REACT_APP_FOR_PATH;
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -49,24 +49,27 @@ function App() {
 
     return (
         <Routes>
-            {/* {userIsLoged ? (
-                <Route path={path+"/"} element={<AppBody logoutHandler={logoutHandler} />}>
-                    <Route index path={path+"home"} element={<Home />} />
-                    <Route path={path+"chat/*"} element={<Chat />} />
-                    <Route path={path+"contact"} element={<Contact />} />
-                    <Route path={path+"notifications"} element={<Notifications />} />
-                    <Route path={path+"calendar"} element={<Calendar />} />
-                    <Route path={path+"settings"} element={<Settings />} />
-                    <Route path={path+"*"} element={<NotFound />} />
+            {userIsLoged ? (
+                <Route path={path + "/"} element={<AppBody logoutHandler={logoutHandler} />}>
+                    <Route index path={path + "home"} element={<Home />} />
+                    <Route path={path + "chat/*"} element={<Chat />} />
+                    <Route path={path + "contact"} element={<Contact />} />
+                    <Route path={path + "notifications"} element={<Notifications />} />
+                    <Route path={path + "calendar"} element={<Calendar />} />
+                    <Route path={path + "settings"} element={<Settings />} />
+                    <Route path={path + "*"} element={<NotFound />} />
                 </Route>
             ) : (
                 <>
-                    <Route path={path+"/login"} element={<LoginBody userLoged={userLoged} />} />
-                    <Route path={path+"/registration"} element={<Registration userLoged={userLoged} />} />
-                    <Route path={path+"*"} element={<NotFound />} />
+                    <Route path={path + "/login"} element={<LoginBody userLoged={userLoged} />} />
+                    <Route
+                        path={path + "/registration"}
+                        element={<Registration userLoged={userLoged} />}
+                    />
+                    <Route path={path + "*"} element={<NotFound />} />
                 </>
-            )} */}
-            {userIsLoged ? (
+            )}
+            {/* {userIsLoged ? (
                 <Route path="/" element={<AppBody logoutHandler={logoutHandler} />}>
                     <Route index path="home" element={<Home />} />
                     <Route path="chat/*" element={<Chat />} />
@@ -82,7 +85,7 @@ function App() {
                     <Route path="/registration" element={<Registration userLoged={userLoged} />} />
                     <Route path="*" element={<NotFound />} />
                 </>
-            )}
+            )} */}
         </Routes>
     );
 }
