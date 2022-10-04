@@ -32,8 +32,8 @@ export default class LastOnlineAction {
         // const lastOnlineYear = lastOnlineDate.getFullYear();
 
         const differenceOfHours = currentHours - lastOnlineHours;
-        const differenceOfDays = currentDay - lastOnlineDay;
         const differenceOfMinute = currentMinute - lastOnlineMinute;
+        const differenceOfDays = currentDay - lastOnlineDay;
 
         if (
             differenceOfMinute > 0 &&
@@ -56,7 +56,7 @@ export default class LastOnlineAction {
             return `last online ${
                 differenceOfDays > 1 ? differenceOfDays + " days ago" : "yesterday"
             } `;
-        } else if (differenceOfDays >= 7 && differenceOfDays < 14) {
+        } else if (differenceOfDays >= 7 && differenceOfDays <= 14) {
             return "last online a week ago";
         }
     }

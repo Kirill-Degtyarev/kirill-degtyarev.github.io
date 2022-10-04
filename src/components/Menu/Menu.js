@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../../Hooks/AuthHooks";
 
-import "./menu.css";
+import styles from "./menu.module.css";
 
 import SvgGenerator from "../../svgGenerator/SvgGenerator";
 import MenuItem from "./MenuItem";
@@ -80,6 +80,12 @@ const Menu = (props) => {
         setNewAvatar(null);
     };
 
+    const openMobileMenu = (e) => {
+        const menu = document.getElementById("menu");
+        console.log(menu);
+        console.log(e.currentTarget);
+    };
+
     const menuList = MENU_ITEM.map((item) => (
         <MenuItem
             id={item.id}
@@ -92,33 +98,38 @@ const Menu = (props) => {
     ));
 
     return (
-        <div className="menu">
-            <div className="menu-body">
-                <div className="menu-body__profile profile">
+        <div className={styles.menu} id="menu">
+            <div className={styles["menu-body"]}>
+                <div className={styles["menu-burger"]} onClick={openMobileMenu}>
+                    <span className={styles["menu-burger__line"]}></span>
+                    <span className={styles["menu-burger__line"]}></span>
+                    <span className={styles["menu-burger__line"]}></span>
+                </div>
+                <div className={`${styles["menu-body__profile"]} ${styles.profile}`}>
                     {currentUser ? (
                         <>
-                            <div className="profile-avatar">
+                            <div className={styles["profile-avatar"]}>
                                 {newAvatarUrl ? (
                                     <img src={newAvatarUrl} alt="avatar" />
                                 ) : currentUser.photoURL ? (
                                     <img src={currentUser.photoURL} alt="avatar" />
                                 ) : (
-                                    <div className="text-avatar">
+                                    <div className={styles["text-avatar"]}>
                                         {AvatarAction.getAvatarByUserName(currentUser.displayName)}
                                     </div>
                                 )}
                             </div>
-                            <div className="profile-info">
+                            <div className={styles["profile-info"]}>
                                 <div
-                                    className="profile-info__body"
+                                    className={styles["profile-info__body"]}
                                     onClick={() => {
                                         setChangeAvatar(!changeAvatar);
                                     }}
                                 >
-                                    <div className="profile-info__username">
+                                    <div className={styles["profile-info__username"]}>
                                         {currentUser.displayName}
                                     </div>
-                                    <div className="profile-info__svg">
+                                    <div className={styles["profile-info__svg"]}>
                                         <SvgGenerator
                                             id="arrow-down"
                                             class={changeAvatar ? "active-item" : ""}
@@ -127,8 +138,10 @@ const Menu = (props) => {
                                     </div>
                                 </div>
                                 {changeAvatar ? (
-                                    <div className="profile-info__action action">
-                                        <div className="action-avatar">
+                                    <div
+                                        className={`${styles["profile-info__action"]} ${styles.action}`}
+                                    >
+                                        <div className={styles["action-avatar"]}>
                                             <input
                                                 id="change-avatar"
                                                 type="file"
@@ -142,18 +155,18 @@ const Menu = (props) => {
                                         </div>
 
                                         {newAvatar ? (
-                                            <div className="action-btn">
+                                            <div className={styles["action-btn"]}>
                                                 <input
                                                     type="button"
                                                     onClick={saveNewAvatar}
                                                     value="Save"
-                                                    className="action-btn__save"
+                                                    className={styles["action-btn__save"]}
                                                 />
                                                 <input
                                                     type="button"
                                                     onClick={cancelNewAvatar}
                                                     value="Cancel"
-                                                    className="action-btn__cancel"
+                                                    className={styles["action-btn__cancel"]}
                                                 />
                                             </div>
                                         ) : (
@@ -169,14 +182,17 @@ const Menu = (props) => {
                         ""
                     )}
                 </div>
-                <ul className="menu-body__list">{menuList}</ul>
+                <ul className={styles["menu-body__list"]}>{menuList}</ul>
             </div>
-            <div className="menu-footer">
-                <div className="menu-footer__btn footer-btn" onClick={() => props.logoutHandler()}>
-                    <div className="footer-btn__icon">
+            <div className={styles["menu-footer"]}>
+                <div
+                    className={`${styles["menu-footer__btn"]} ${styles["footer-btn"]}`}
+                    onClick={() => props.logoutHandler()}
+                >
+                    <div className={styles["footer-btn__icon"]}>
                         <SvgGenerator id="logout" />
                     </div>
-                    <div className="footer-btn__text">logout</div>
+                    <div className={styles["footer-btn__text"]}>logout</div>
                 </div>
             </div>
         </div>

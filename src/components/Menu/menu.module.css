@@ -18,6 +18,28 @@
     margin-bottom: 50%;
 }
 
+.menu-burger {
+    /* display: inline-block; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.menu-burger__line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #2a8bf2;
+    border-radius: 8px;
+}
+
+.menu-burger__line:not(:last-child) {
+    margin-bottom: 5px;
+}
+
 .menu-body__profile {
     display: flex;
     flex-direction: column;
@@ -133,7 +155,6 @@
     align-items: center;
     justify-content: center;
 }
-
 .profile-info__svg svg {
     transition: 0.2s ease all;
     transform: rotate(0deg);
