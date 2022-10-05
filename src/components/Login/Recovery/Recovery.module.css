@@ -208,6 +208,12 @@
     }
 }
 
+@media (max-width: 425px) {
+    .recovery-container {
+        height: 70vh;
+    }
+}
+
 @media (max-width: 375px) {
     .recovery__title {
         display: block;
