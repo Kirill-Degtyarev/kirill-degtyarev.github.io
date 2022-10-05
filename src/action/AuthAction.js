@@ -5,6 +5,7 @@ import {
     signInWithPopup,
     updateProfile,
     getAuth,
+    sendPasswordResetEmail,
 } from "firebase/auth";
 
 import { doc, getDocs, where, query, collection, updateDoc } from "firebase/firestore";
@@ -97,5 +98,9 @@ export default class AuthAction {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    static async resetPassword(email) {
+        await sendPasswordResetEmail(auth, email);
     }
 }

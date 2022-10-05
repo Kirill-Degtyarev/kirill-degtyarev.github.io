@@ -1,7 +1,6 @@
 .wrapper {
     padding: 0px 15px;
     min-height: 100vh;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,7 +168,7 @@
 
 .autorization__form-remeber {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .autorization__form-remeber label {

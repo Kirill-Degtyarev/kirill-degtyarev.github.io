@@ -517,3 +517,9 @@
     cursor: pointer;
     display: inline-block;
 }
+
+.lock {
+    width: 220px;
+    height: 220px;
+    display: inline-block;
+}

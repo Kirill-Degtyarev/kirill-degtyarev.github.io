@@ -13,6 +13,7 @@ import Calendar from "./components/Calendar/Calendar";
 import Settings from "./components/Settings/Settings";
 import LoginBody from "./components/Login/LoginBody";
 import Registration from "./components/Login/Registartion/Registration";
+import Recovery from "./components/Login/Recovery/Recovery";
 import NotFound from "./components/NotFound/NotFound";
 
 // import styles from "./App.module.css";
@@ -61,6 +62,7 @@ function App() {
                 <>
                     <Route path="/login" element={<LoginBody userLoged={userLoged} />} />
                     <Route path="/registration" element={<Registration userLoged={userLoged} />} />
+                    <Route path="/recovery" element={<Recovery />} />
                     <Route path="/*" element={<NotFound />} />
                 </>
             )}

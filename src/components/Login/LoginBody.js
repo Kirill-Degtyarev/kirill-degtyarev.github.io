@@ -82,22 +82,16 @@ const LoginBody = (props) => {
                                 <input type="checkbox" value="yes" required />
                                 Запомнить меня
                             </label> */}
-                            <a
-                                href="../project/recovery.html"
-                                className={styles["form__remeber-link"]}
-                            >
+                            <Link to="/recovery" className={styles["form__remeber-link"]}>
                                 Забыли пароль?
-                            </a>
+                            </Link>
                         </div>
                         <div className={styles["autorization__form-log"]}>
                             <input tabIndex="4" type="submit" value="Войти" />
                         </div>
-                        <a
-                            href="../project/recovery.html"
-                            className={styles["form__remeber-link-phone"]}
-                        >
+                        <Link to="/recovery" className={styles["form__remeber-link-phone"]}>
                             Забыли пароль?
-                        </a>
+                        </Link>
                         <div className={styles.autorization__footer}>
                             <h2>
                                 Ещё нет аккаунта? <Link to="/registration">Зарегистрироваться</Link>
