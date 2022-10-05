@@ -36,12 +36,16 @@ const LoginBody = (props) => {
                     <div className={styles.autorization__title}>
                         <h2>Авторизация</h2>
                     </div>
-                    <a href="https://accounts.google.com/" className={styles.autorization__google}>
-                        <span className={styles["autorization__google-icon"]}></span>
+                    <div
+                        className={styles.autorization__google}
+                        onClick={() => {
+                            AuthAction.loginWithGoogle(props.userLoged);
+                        }}
+                    >
                         <span className={styles["autorization__google-btn"]}>
                             Войти через Google
                         </span>
-                    </a>
+                    </div>
                     <div className={styles.autorization__email}>
                         <div className={styles["autorization__email-line"]}></div>
                         <h2>Или через электроную почту</h2>

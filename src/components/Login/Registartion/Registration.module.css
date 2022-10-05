@@ -1,27 +1,72 @@
 .wrapper {
+    overflow: hidden;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-}
-
-.registration__container {
-    max-width: 1400px;
     padding: 0px 15px;
 }
 
+.container {
+    max-width: 1410px;
+    overflow: hidden;
+}
+.registration-container {
+    position: relative;
+    width: 470px;
+    height: 87vh;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.registration-container::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+
+.registration-container::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .body__registration {
+    position: absolute;
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
     align-items: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    padding: 50px 30px;
+    inset: 2px;
+    z-index: 10;
     background: #ffffff;
     border-radius: 20px;
-    max-width: 600px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    align-content: center;
-    padding: 40px 30px 40px 30px;
-    max-height: 70vh;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -37,11 +82,12 @@
 
 .registration__google {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    justify-content: center;
+    padding: 11px 15px 11px 15px;
+    border-radius: 14px;
+    width: 100%;
     border: 1px solid #e8e9eb;
     color: #595f69;
-    border-radius: 14px;
     cursor: pointer;
     transition: 0.2s ease border;
 }
@@ -50,20 +96,22 @@
     border: 1px solid #304ffd;
 }
 
-.registration__google-icon {
+.registration__google-btn {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 19px;
+}
+
+.registration__google-btn::before {
+    content: "";
     width: 15px;
     height: 16px;
     background-image: url(../../../assest/icons/IconLogin/google-icon.svg);
     background-repeat: no-repeat;
     background-position: center center;
-    margin: 0px 0px 0px 14px;
-}
-
-.registration__google-btn {
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 19px;
-    padding: 10px 128px 11px 98px;
 }
 
 .registration__email {
@@ -91,10 +139,7 @@
 }
 
 .registration__form {
-    /* display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    align-content: center; */
+    width: 100%;
 }
 
 .registration__form-fio {
@@ -106,16 +151,10 @@
 }
 
 .registration__form-password {
-    display: flex;
-    flex-direction: row;
     margin: 0px 0px 28px 0px;
-    align-items: center;
 }
 
 .registration__form-password-confirm {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     margin: 0px 0px 21px 0px;
 }
 
@@ -144,7 +183,7 @@
 .registration__form-log input[type="submit"] {
     width: 100%;
     background-color: #304ffd;
-    padding: 10px 0px 9px 0px;
+    padding: 10px 0px;
     font-weight: 500;
     font-size: 15px;
     line-height: 19px;
@@ -163,7 +202,7 @@
     background-color: #304ffd;
 }
 
-.registration__footer {
+.registration__footer h2 {
     font-size: 14px;
     line-height: 18px;
     text-align: center;
@@ -212,9 +251,8 @@
     color: #3f434a;
     border: 1px solid #e8e9eb;
     border-radius: 14px;
-    width: 400px;
-    max-width: 100%;
-    padding: 9px 0px 10px 15px;
+    width: 100%;
+    padding: 10px 15px;
     transition: 0.2s ease border;
 }
 
@@ -232,9 +270,8 @@
     color: #3f434a;
     border: 1px solid #e8e9eb;
     border-radius: 14px;
-    width: 400px;
-    max-width: 100%;
-    padding: 10px 0px 10px 15px;
+    width: 100%;
+    padding: 10px 15px;
     transition: 0.2s ease border;
 }
 
@@ -255,10 +292,9 @@
     letter-spacing: 0.03em;
     line-height: 60px;
     max-height: 40px;
-    max-width: 100%;
-    padding: 0 0 0 15px;
+    width: 100%;
+    padding: 0px 15px;
     transition: border 0.2s ease;
-    width: 400px;
     position: relative;
 }
 
@@ -286,10 +322,9 @@
     letter-spacing: 0.03em;
     line-height: 60px;
     max-height: 40px;
-    max-width: 100%;
-    padding: 0 0 0 15px;
+    width: 100%;
+    padding: 0px 15px;
     transition: border 0.2s ease;
-    width: 400px;
     position: relative;
 }
 
@@ -308,40 +343,13 @@
     border: 1px solid #304ffd;
 }
 
-.password__input-icon {
-    /* background-image: url(../img/icons/Hide.svg); */
-    background-repeat: no-repeat;
-    background-position: right;
-    display: flex;
-    width: 40px;
-    height: 18px;
-    color: #3f434a;
-    position: absolute;
-    margin: 0px 0px 1px 346px;
-}
-
-.password__confirm-input-icon {
-    /* background-image: url(../img/icons/Hide.svg); */
-    background-repeat: no-repeat;
-    background-position: right;
-    display: flex;
-    width: 40px;
-    height: 18px;
-    color: #3f434a;
-    position: absolute;
-    margin: 0px 0px 3px 346px;
-}
-
 @media (max-width: 1024px) {
-    .wrapper {
-        min-height: 950px;
+    .body__registration {
+        padding: 15px 50px;
     }
     .registration__title {
-        margin-top: 71px;
+        margin-top: 10px;
         margin-bottom: 44px;
-    }
-    .registration__google-btn {
-        padding: 10px 82px 11px 63px;
     }
     .registration__email {
         margin: 32px 0px 31px 0px;
@@ -352,12 +360,6 @@
     .registration__form-log {
         margin: 27px 0px 66px 0px;
     }
-    .registration__form-log input[type="submit"] {
-        padding: 10px 86px 9px 85px;
-    }
-    .registration__footer {
-        margin: 0px 0px 35px 0px;
-    }
     .registration__form-fio {
         margin: 0px 0px 35px 0px;
     }
@@ -366,22 +368,6 @@
     }
     .registration__form-password {
         margin: 0px 0px 32px 0px;
-    }
-    .body__registration {
-        margin: 40px auto;
-        max-width: 430px;
-    }
-    .form-email__input {
-        width: 320px;
-    }
-    .form-fio__input {
-        width: 320px;
-    }
-    .form-password__input {
-        width: 320px;
-    }
-    .form-password__input-confirm {
-        width: 320px;
     }
     .form__remeber-link h2 {
         display: block;
@@ -395,40 +381,21 @@
     }
 }
 
+@media (max-width: 425px) {
+    .body__registration {
+        padding: 15px 10px;
+    }
+}
+
 @media (max-width: 375px) {
-    .wrapper {
-        min-height: 900px;
-    }
     .registration__title {
-        margin-top: 46px;
         margin-bottom: 44px;
-    }
-    .registration__google-btn {
-        padding: 10px 53px 11px 25px;
     }
     .registration__email-line {
         width: 15px;
     }
-    .registration__form-log input[type="submit"] {
-        padding: 10px 51px 9px 51px;
-    }
     .registration__form-confirm {
         margin: 0px 0px 24px 0px;
-    }
-    .body__registration {
-        max-width: 316px;
-    }
-    .form-email__input {
-        width: 252px;
-    }
-    .form-fio__input {
-        width: 252px;
-    }
-    .form-password__input {
-        width: 252px;
-    }
-    .form-password__input-confirm {
-        width: 252px;
     }
     .form__remeber-link h2 {
         display: block;

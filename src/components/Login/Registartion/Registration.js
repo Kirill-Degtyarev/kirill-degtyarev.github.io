@@ -40,13 +40,17 @@ const Registration = (props) => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles["registration__container"]}>
+            <div className={`${styles["registration-container"]} ${styles["container"]}`}>
                 <div className={styles["body__registration"]}>
                     <div className={styles.registration__title}>
                         <h2>Региcтрация</h2>
                     </div>
-                    <div className={styles.registration__google}>
-                        <span className={styles["registration__google-icon"]}></span>
+                    <div
+                        className={styles.registration__google}
+                        onClick={() => {
+                            AuthAction.loginWithGoogle(props.userLoged);
+                        }}
+                    >
                         <span className={styles["registration__google-btn"]}>
                             Войти через Google
                         </span>
@@ -90,7 +94,6 @@ const Registration = (props) => {
                                 value={userPassword}
                                 onChange={(e) => setUserPassword(e.target.value)}
                             />
-                            <span className={styles["password__input-icon"]}></span>
                         </div>
                         <h2 className={styles.form__subtitle}>Подтверждение пароля</h2>
                         <div className={styles["registration__form-password-confirm"]}>
@@ -103,7 +106,6 @@ const Registration = (props) => {
                                 value={userConfirmPassword}
                                 onChange={(e) => setUserConfirmPassword(e.target.value)}
                             />
-                            <span className={styles["password__confirm-input-icon"]}></span>
                         </div>
                         {/* <div className={styles["registration__form-remeber"]}>
                             <label>
