@@ -1,12 +1,67 @@
 .menu {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
     min-width: 16vw;
+    max-width: 18vw;
+    width: 100%;
     height: 100vh;
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 45px 0px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px 1px #bfbfbf;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    transition: 0.3s ease all;
+}
+.mobile-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    min-width: 175px !important;
+    max-width: 175px !important;
+}
+
+.mobile-menu .menu-body__profile {
+    display: flex;
+    padding: 0 5px;
+    margin-bottom: 20px;
+}
+
+.mobile-menu .profile-avatar img {
+    width: 55px;
+    height: 55px;
+}
+
+.mobile-menu .profile-info__username {
+    font-size: 16px;
+}
+
+.mobile-menu .action-avatar label {
+    font-size: 14px;
+    padding: 5px;
+}
+
+.mobile-menu .action-avatar label svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+.mobile-menu .menu-footer__btn {
+    margin-left: 8px;
+    justify-content: flex-start;
+}
+
+.mobile-menu .footer-btn__icon {
+    margin-right: 18px;
+}
+
+.mobile-menu .footer-btn__text {
+    display: block;
 }
 
 .menu::-webkit-scrollbar-thumb {
@@ -19,13 +74,36 @@
 }
 
 .menu-burger {
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    width: 25px;
+    height: 19px;
     display: none;
-    /* display: flex; */
     flex-direction: column;
     align-items: flex-end;
-    margin-right: 10px;
-    margin-bottom: 10px;
     cursor: pointer;
+    transition: 0.3s ease all;
+}
+
+.close-menu {
+    top: 15px;
+    right: 5px;
+}
+
+.close-menu > span:nth-child(1) {
+    position: absolute;
+    transform: rotate(130deg);
+    height: 2px;
+}
+.close-menu > span:nth-child(2) {
+    transform: rotate(130deg);
+    height: 2px;
+}
+.close-menu > span:nth-child(3) {
+    position: absolute;
+    transform: rotate(-130deg);
+    height: 2px;
 }
 
 .menu-burger__line {
@@ -34,6 +112,7 @@
     height: 3px;
     background-color: #2a8bf2;
     border-radius: 8px;
+    transition: 0.6s ease all;
 }
 
 .menu-burger__line:not(:last-child) {
@@ -49,13 +128,15 @@
 
 .profile-avatar {
     margin-bottom: 10px;
-    user-select: none;
 }
 
 .profile-avatar img {
     width: 86px;
     height: 86px;
     border-radius: 50%;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .text-avatar {
@@ -72,7 +153,9 @@
     color: #ffffff;
     font-weight: 500;
     font-size: 36px;
+    -webkit-user-select: none;
     user-select: none;
+    -webkit-user-drag: none;
     text-transform: uppercase;
 }
 
@@ -211,4 +294,37 @@
     text-transform: uppercase;
     user-select: none;
     transition: 0.3s ease all;
+}
+
+@media (max-width: 1024px) {
+    .menu {
+        min-width: 0vw;
+        width: 45px;
+        justify-content: space-between;
+    }
+    .menu-burger {
+        display: flex;
+    }
+    .menu-body__profile {
+        display: none;
+    }
+    .footer-btn__text {
+        display: none;
+    }
+    .footer-btn__icon {
+        margin-right: 0;
+    }
+    .menu-footer__btn {
+        margin-left: 0;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 760px) {
+}
+
+@media (max-width: 475px) {
+    .menu-burger {
+        right: 2.5px;
+    }
 }

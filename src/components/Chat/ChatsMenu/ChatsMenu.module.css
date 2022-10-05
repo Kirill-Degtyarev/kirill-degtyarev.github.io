@@ -1,5 +1,7 @@
 .chats__container {
-    width: 30vw;
+    max-width: 453px;
+    min-width: 170px;
+    width: 100%;
 }
 
 .chats__wr {
@@ -170,4 +172,7 @@
     .search-body__select {
         padding: 20px 0px 20px 18px;
     }
+}
+
+@media (max-width: 375px) {
 }

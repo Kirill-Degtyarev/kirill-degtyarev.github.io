@@ -14,7 +14,11 @@ const MenuItem = (props) => {
                     isActive ? "menu-item__link active-link" : "menu-item__link"
                 }
             >
-                <div className="menu-item__info item-info">
+                <div
+                    className={`${
+                        props.mobileMenu ? "menu-item__info item-info" : "menu-item__info"
+                    }`}
+                >
                     <div className={`${"item-info__img"} ${props.img_class}`}>
                         <SvgGenerator id={props.img_id} />
                     </div>

@@ -56,6 +56,7 @@ const Menu = (props) => {
     const [changeAvatar, setChangeAvatar] = useState(false);
     const [newAvatarUrl, setNewAvatarUrl] = useState(null);
     const [newAvatar, setNewAvatar] = useState(null);
+    const [openMenu, setOpenMenu] = useState(false);
     const currentUser = useAuth();
 
     const uploadNewAvatar = (e) => {
@@ -81,13 +82,14 @@ const Menu = (props) => {
     };
 
     const openMobileMenu = (e) => {
-        const menu = document.getElementById("menu");
-        console.log(menu);
-        console.log(e.currentTarget);
+        // const menu = document.getElementById("menu");
+        // menu.classList.add();
+        setOpenMenu(!openMenu);
     };
 
     const menuList = MENU_ITEM.map((item) => (
         <MenuItem
+            mobileMenu={openMenu}
             id={item.id}
             key={item.id}
             text={item.title}
@@ -98,9 +100,12 @@ const Menu = (props) => {
     ));
 
     return (
-        <div className={styles.menu} id="menu">
+        <div className={`${styles.menu} ${openMenu ? styles["mobile-menu"] : ""}`} id="menu">
             <div className={styles["menu-body"]}>
-                <div className={styles["menu-burger"]} onClick={openMobileMenu}>
+                <div
+                    className={`${styles["menu-burger"]} ${openMenu ? styles["close-menu"] : ""}`}
+                    onClick={openMobileMenu}
+                >
                     <span className={styles["menu-burger__line"]}></span>
                     <span className={styles["menu-burger__line"]}></span>
                     <span className={styles["menu-burger__line"]}></span>
@@ -124,6 +129,7 @@ const Menu = (props) => {
                                     className={styles["profile-info__body"]}
                                     onClick={() => {
                                         setChangeAvatar(!changeAvatar);
+                                        console.log(changeAvatar);
                                     }}
                                 >
                                     <div className={styles["profile-info__username"]}>
@@ -132,7 +138,7 @@ const Menu = (props) => {
                                     <div className={styles["profile-info__svg"]}>
                                         <SvgGenerator
                                             id="arrow-down"
-                                            class={changeAvatar ? "active-item" : ""}
+                                            class={changeAvatar ? `${styles["active-item"]}` : ""}
                                             stroke="#0D1C2E"
                                         />
                                     </div>

@@ -6,7 +6,9 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    -webkit-user-select: none;
     user-select: none;
+    -webkit-user-drag: none;
 }
 
 .menu-item__link::before {
@@ -86,4 +88,37 @@
 
 .img-settings {
     padding: 2px;
+}
+
+.item-info .item-info__text {
+    display: block;
+    margin-left: 10px;
+}
+
+@media (max-width: 1200px) {
+    .menu-item__info {
+        padding: 14px 0px 14px 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .item-info__text {
+        display: none;
+    }
+    .menu-item:not(:last-child) {
+        margin-bottom: 10px;
+    }
+    .menu-item__info {
+        padding: 5px 0px 5px 5px;
+    }
+    .item-info__img {
+        margin-right: 0;
+    }
+    .menu-item__link::before {
+        width: 1.5px;
+        transition: 0.6s ease height, 0.3s ease box-shadow, 0.3s ease border-radius;
+    }
+    .active-link::before {
+        height: 35px;
+    }
 }
