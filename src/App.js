@@ -60,7 +60,6 @@ function App() {
                         <Route path="/*" element={<NotFound />} />
                     </Route>
                 ) : (
-                    // <div className={styles.autorization__container}>
                     <>
                         <Route path="/login" element={<LoginBody userLoged={userLoged} />} />
                         <Route
@@ -70,7 +69,6 @@ function App() {
                         <Route path="/recovery" element={<Recovery />} />
                         <Route path="/*" element={<NotFound />} />
                     </>
-                    // </div>
                 )}
             </Routes>
         </div>
