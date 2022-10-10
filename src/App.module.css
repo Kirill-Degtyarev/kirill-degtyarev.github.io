@@ -1,3 +1,13 @@
-.wrapper {
-    background-color: rgb(221, 217, 217);
+.entry__container {
+    max-width: 1410px;
+    min-height: 100vh;
+    padding: 0px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notice__container {
+    max-width: 1410px;
+    min-height: 100vh;
 }

@@ -7,51 +7,62 @@ import CreateChat from "../../../assest/img/Contact/create-chat.png";
 
 import styles from "./UserContact.module.css";
 
-const UserContact = (props) => {
-    const currentUser = props.currentUser;
-    const createContact = props.user;
-
-    return (
-        <div className={styles["user-container"]}>
-            <div className={styles["user-container__info"]}>
-                <div className={styles.user__avatar}>
-                    {createContact.online ? (
-                        <span className={`${styles["user-avatar__online"]} `}></span>
-                    ) : (
-                        ""
-                    )}
-                    {createContact.userAvatar !== null ? (
-                        <img
-                            src={createContact.userAvatar}
-                            alt="avatar"
-                            className={styles["user-avatar"]}
-                        />
-                    ) : (
-                        <div className={styles["user-avatarName"]}>
-                            {AvatarAction.getAvatarByUserName(createContact.userDisplayName)}
-                        </div>
-                    )}
-                </div>
-                <div className={styles.user__userName}>{createContact.userDisplayName}</div>
-                <div
-                    onClick={() => {
-                        window.location = `mailto:${createContact.userEmail} `;
-                    }}
-                    className={styles.user__userEmail}
-                >
-                    {createContact.userEmail}
-                </div>
-            </div>
+const UserContact = ({ currentUser, users }) => {
+    return users.map((item) => {
+        return currentUser.uid !== item.userId ? (
             <div
-                className={styles["user-container__button"]}
-                onClick={() => {
-                    ChatAction.createChat(currentUser, createContact);
-                }}
+                className={`${styles["user-list__item"]} ${styles["user-item"]}`}
+                key={item.userId}
             >
-                <img src={CreateChat} alt="create-chat" />
+                <div className={`${styles["user-item__body"]} ${styles["item-body"]}`}>
+                    <div className={`${styles["item-body__info"]} ${styles["item-info"]}`}>
+                        <div className={styles.user__avatar}>
+                            {item.online ? (
+                                <span className={`${styles["user-avatar__online"]} `}></span>
+                            ) : (
+                                ""
+                            )}
+                            {item.userAvatar !== null ? (
+                                <img
+                                    src={item.userAvatar}
+                                    alt="avatar"
+                                    className={styles["avatar-img"]}
+                                />
+                            ) : (
+                                <div className={styles["avatar-name"]}>
+                                    {AvatarAction.getAvatarByUserName(item.userDisplayName)}
+                                </div>
+                            )}
+                        </div>
+                        <div className={styles["user-info"]}>
+                            <div className={styles.user__userName}>{item.userDisplayName}</div>
+                            <div
+                                onClick={() => {
+                                    window.location = `mailto:${item.userEmail} `;
+                                }}
+                                className={styles.user__userEmail}
+                                data-title="Write to mail"
+                            >
+                                {item.userEmail}
+                            </div>
+                        </div>
+                    </div>
+                    <div className={`${styles["item-body__btn"]} ${styles["item-btn"]}`}>
+                        <div
+                            className={styles["item-btn__button"]}
+                            onClick={() => {
+                                ChatAction.createChat(currentUser, item);
+                            }}
+                        >
+                            <img src={CreateChat} alt="create-chat" />
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    );
+        ) : (
+            ""
+        );
+    });
 };
 
 export default UserContact;

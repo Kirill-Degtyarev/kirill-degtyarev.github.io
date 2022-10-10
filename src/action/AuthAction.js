@@ -3,6 +3,7 @@ import {
     signInWithEmailAndPassword,
     GoogleAuthProvider,
     signInWithPopup,
+    // signInWithRedirect,
     updateProfile,
     getAuth,
     sendPasswordResetEmail,
@@ -45,6 +46,14 @@ export default class AuthAction {
     static async loginWithGoogle(userLoged) {
         const provider = new GoogleAuthProvider();
         const auth = getAuth();
+        // if (
+        //     /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+        //         navigator.userAgent
+        //     )
+        // ) {
+        //     alert("Вы используете мобильное устройство (телефон или планшет).");
+        // } else alert("Вы используете ПК.");
+
         signInWithPopup(auth, provider)
             .then(async (result) => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);

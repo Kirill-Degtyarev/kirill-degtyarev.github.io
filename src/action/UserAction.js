@@ -20,10 +20,15 @@ export default class UserAction {
     static async getUsers(setUsers) {
         onSnapshot(query(collection(db, "users")), (docs) => {
             let users = [];
+
             docs.forEach((doc) => {
                 users.push(doc.data());
             });
-            users.sort((x, y) => x.userEmail.localeCompare(y.userEmail));
+
+            if (users.length !== 0) {
+                users.sort((x, y) => x.userEmail.localeCompare(y.userEmail));
+            }
+
             setUsers(users);
         });
     }

@@ -142,7 +142,9 @@
     letter-spacing: 0.01em;
     color: #0d1c2e;
     font-weight: 600;
+    -webkit-user-select: none;
     user-select: none;
+    -webkit-user-drag: none;
 }
 
 .chatlist::-webkit-scrollbar-thumb {

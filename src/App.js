@@ -11,12 +11,12 @@ import Contact from "./components/Contact/Contact";
 import Notifications from "./components/Notifications/Notifications";
 import Calendar from "./components/Calendar/Calendar";
 import Settings from "./components/Settings/Settings";
-import LoginBody from "./components/Login/LoginBody";
-import Registration from "./components/Login/Registartion/Registration";
-import Recovery from "./components/Login/Recovery/Recovery";
+import LoginBody from "./components/Entry/Login/Login";
+import Registration from "./components/Entry/Registartion/Registration";
+import Recovery from "./components/Entry/Recovery/Recovery";
 import NotFound from "./components/NotFound/NotFound";
 
-// import styles from "./App.module.css";
+import styles from "./App.module.css";
 import "./fonts/fonts.css";
 
 function App() {
@@ -47,26 +47,33 @@ function App() {
     };
 
     return (
-        <Routes>
-            {userIsLoged ? (
-                <Route path="/" element={<AppBody logoutHandler={logoutHandler} />}>
-                    <Route index path="/home" element={<Home />} />
-                    <Route path="/chat/*" element={<Chat />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/notifications" element={<Notifications />} />
-                    <Route path="/calendar" element={<Calendar />} />
-                    <Route path="/settings" element={<Settings />} />
-                    <Route path="/*" element={<NotFound />} />
-                </Route>
-            ) : (
-                <>
-                    <Route path="/login" element={<LoginBody userLoged={userLoged} />} />
-                    <Route path="/registration" element={<Registration userLoged={userLoged} />} />
-                    <Route path="/recovery" element={<Recovery />} />
-                    <Route path="/*" element={<NotFound />} />
-                </>
-            )}
-        </Routes>
+        <div className={userIsLoged ? styles.notice__container : styles.entry__container}>
+            <Routes>
+                {userIsLoged ? (
+                    <Route path="/" element={<AppBody logoutHandler={logoutHandler} />}>
+                        <Route index path="/home" element={<Home />} />
+                        <Route path="/chat/*" element={<Chat />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/notifications" element={<Notifications />} />
+                        <Route path="/calendar" element={<Calendar />} />
+                        <Route path="/settings" element={<Settings />} />
+                        <Route path="/*" element={<NotFound />} />
+                    </Route>
+                ) : (
+                    // <div className={styles.autorization__container}>
+                    <>
+                        <Route path="/login" element={<LoginBody userLoged={userLoged} />} />
+                        <Route
+                            path="/registration"
+                            element={<Registration userLoged={userLoged} />}
+                        />
+                        <Route path="/recovery" element={<Recovery />} />
+                        <Route path="/*" element={<NotFound />} />
+                    </>
+                    // </div>
+                )}
+            </Routes>
+        </div>
     );
 }
 

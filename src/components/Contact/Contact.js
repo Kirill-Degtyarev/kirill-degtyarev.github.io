@@ -9,25 +9,29 @@ import styles from "./Contact.module.css";
 
 const Contact = (props) => {
     const currentUser = useAuth();
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState();
+
+    console.log(users);
 
     useEffect(() => {
         UserAction.getUsers(setUsers);
     }, []);
 
     return (
-        <div className={users.length > 0 ? styles["contact-body"] : styles["contact-body__loader"]}>
-            {users.length > 0 ? (
-                users.map((item) => {
-                    return currentUser.uid !== item.userId ? (
-                        <UserContact currentUser={currentUser} key={item.userId} user={item} />
+        <div className={styles.contact}>
+            <div className={users ? styles["contact-body"] : styles["contact-body__loader"]}>
+                {users ? (
+                    users.length !== 0 ? (
+                        <div className={styles["user-list"]}>
+                            <UserContact currentUser={currentUser} users={users} />
+                        </div>
                     ) : (
-                        ""
-                    );
-                })
-            ) : (
-                <Loader />
-            )}
+                        <h1 className={styles["none-user"]}>Users do not exist yet.</h1>
+                    )
+                ) : (
+                    <Loader />
+                )}
+            </div>
         </div>
     );
 };
