@@ -8,7 +8,13 @@ import styles from "./LoginBody.module.css";
 const LoginBody = (props) => {
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
-
+    if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+            navigator.userAgent
+        )
+    ) {
+        alert("Вы используете мобильное устройство (телефон или планшет).");
+    } else alert("Вы используете ПК.");
     const loginUserHandler = async (e) => {
         e.preventDefault();
 
