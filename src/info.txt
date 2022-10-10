@@ -1,23 +1,12 @@
-    ChatBody
-    // useEffect(() => {
-    //     if (currentUser && userCompanion.length !== 0 && props.chatId) {
-    //         ChatAction.getChat(props.chatId, setChat);
-    //     }
-    // }, [currentUser, userCompanion]);
-
-    ChatAction
-    // static async getChat(chatId, setChat) {
-    //     onSnapshot(doc(db, "chat", chatId), (doc) => {
-    //         if (doc.data()) {
-    //             setChat(doc.data());
-    //         }
-    //     });
-    // }
-
-    ChatListChat на NavLink
-    // onClick={() => {
-    //     props.setChatId(props.chatsInfo.key);
-    // }}
-
-    Chat
-    const [chatId, setChatId] = useState("");
+@media (min-width: 1200px) {
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+@media (min-width: 768px) and (max-width: 991px) {
+}
+@media (max-width: 767px) {
+}
+@media (max-width: 480px) {
+}
+@media (max-width: 320px) {
+}
