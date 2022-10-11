@@ -1,5 +1,5 @@
 .entry__container {
-    max-width: 1410px;
+    max-width: 2560px;
     min-height: 100vh;
     padding: 0px 15px;
     display: flex;
@@ -8,6 +8,6 @@
 }
 
 .notice__container {
-    max-width: 1410px;
+    max-width: 2560px;
     min-height: 100vh;
 }

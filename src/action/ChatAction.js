@@ -81,13 +81,14 @@ export default class ChatAction {
         };
     }
 
-    static async sendMessage(message, chatID, senderMessageUid) {
+    static async sendMessage(message, setMessageValue, chatID, senderMessageUid) {
         const date = new Date().toISOString();
-
+        const messages = message;
+        setMessageValue("");
         await updateDoc(doc(collection(db, "chat"), chatID), {
             messages: arrayUnion({
                 key: Math.random(),
-                messageText: message,
+                messageText: messages,
                 senderMessage: senderMessageUid,
                 sendTime: date,
             }),
@@ -95,7 +96,7 @@ export default class ChatAction {
 
         await updateDoc(doc(collection(db, "chat"), chatID), {
             lastMessages: {
-                content: message,
+                content: messages,
                 sendLastTime: date,
             },
         });

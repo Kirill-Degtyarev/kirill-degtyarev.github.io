@@ -33,7 +33,6 @@ const ChatlistChat = (props) => {
 
         return hours + ":" + minute;
     };
-
     return (
         <>
             {userCompanion ? (

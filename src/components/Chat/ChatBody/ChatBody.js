@@ -31,7 +31,7 @@ const ChatBody = (props) => {
 
     useEffect(() => {
         const anchorChat = document.getElementById("anchor-scroll");
-        anchorChat.scrollIntoView({ behavior: "smooth", block: "end" });
+        anchorChat.scrollIntoView({ behavior: "auto", block: "end" });
     }, [chat]);
 
     useEffect(() => {
@@ -58,7 +58,7 @@ const ChatBody = (props) => {
         const anchorChat = document.getElementById("anchor-scroll");
 
         if (messageValue !== "") {
-            await ChatAction.sendMessage(messageValue, chat.key, currentUser.uid);
+            await ChatAction.sendMessage(messageValue, setMessageValue, chat.key, currentUser.uid);
             anchorChat.scrollIntoView({ behavior: "smooth", block: "end" });
             messageInput.dataset.placeholder = "Type a message here";
             messageInput.innerText = "";

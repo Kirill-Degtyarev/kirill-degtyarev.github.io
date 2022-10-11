@@ -1,5 +1,5 @@
 .chats__container {
-    max-width: 453px;
+    max-width: 100%;
     min-width: 170px;
     width: 100%;
 }
@@ -16,17 +16,13 @@
     margin-bottom: 24px;
 }
 
-.chats-header__info {
-}
-
 .header-info__title {
     font-size: 36px;
-    line-height: 72%;
     letter-spacing: 0.01em;
     text-transform: capitalize;
     color: #0d1c2e;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .header-info__select {
@@ -49,26 +45,31 @@
 
 .chats-header__button {
     position: relative;
-}
-
-.chats-header__button input[type="button"] {
     background: linear-gradient(92.68deg, #7cb8f7 0%, #2a8bf2 100%);
     box-shadow: 6px 6px 25px rgba(42, 139, 242, 0.15), 4px 4px 25px rgba(42, 139, 242, 0.05),
         10px 6px 25px rgba(42, 139, 242, 0.15);
     border-radius: 6px;
+    padding: 14px 20px;
+    cursor: pointer;
+}
+
+.chats-header__button-title {
+    position: relative;
+    display: flex;
+    align-items: center;
     font-size: 20px;
     line-height: 24px;
     text-transform: capitalize;
     color: #ffffff;
-    padding: 18px 25px 18px 56px;
-    cursor: pointer;
 }
 
-.chats-header__button-img {
-    position: absolute;
-    padding: 4px;
-    top: 18px;
-    left: 25px;
+.chats-header__button-title::before {
+    content: "";
+    background-image: url(../../../assest/icons/iconChatMenu/plus.svg);
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    margin-right: 15px;
 }
 
 .chats-search {
@@ -126,7 +127,9 @@
 .chatlist {
     height: 72.5vh;
     padding-right: 10px;
-    overflow: auto;
+    padding-bottom: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .chatlist-loader {
@@ -152,29 +155,43 @@
     border: color transparent !important;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 480px) {
+    .chats-header {
+        margin-bottom: 12px;
+    }
     .header-info__title {
-        font-size: 28px;
-        margin-bottom: 7px;
+        line-height: 109%;
+        font-size: 24px;
     }
-
-    .chats-header__button input[type="button"] {
-        padding: 12px 15px 12px 30px;
-    }
-
-    .chats-header__button-img {
-        top: 11px;
-        left: 5px;
-    }
-
     .chats-search {
-        padding: 0 15px;
+        padding: 0px 15px;
     }
-
+    .search-body__input {
+        display: flex;
+        align-items: center;
+    }
     .search-body__select {
-        padding: 20px 0px 20px 18px;
+        padding: 10px 0px 10px 20px;
     }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 425px) {
+    .chats-header {
+        flex-direction: column;
+    }
+    .header-info__title {
+        text-align: center;
+        margin-bottom: 0;
+    }
+    .chats-header__info {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .chats-header__button {
+        padding: 7px 10px;
+    }
+    .chats-header__button-title::before {
+        margin-right: 10px;
+    }
 }

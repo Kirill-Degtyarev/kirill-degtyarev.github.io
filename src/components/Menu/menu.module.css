@@ -247,13 +247,6 @@
     transform: rotate(180deg) !important;
 }
 
-/* .active-item path {
-    stroke: red;
-} */
-
-.menu-body__menu-list {
-}
-
 .menu-footer {
     width: 100%;
 }
@@ -324,7 +317,10 @@
 }
 
 @media (max-width: 475px) {
+    .menu::-webkit-scrollbar {
+        width: 2.5px;
+    }
     .menu-burger {
-        right: 2.5px;
+        right: 6.5px;
     }
 }

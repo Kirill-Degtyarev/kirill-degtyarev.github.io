@@ -206,7 +206,7 @@
 
 @media (max-width: 1440px) {
     .chatlist-chat {
-        padding: 20px 15px 20px 15px;
+        padding: 20px 15px;
     }
     .chat-avatar__online {
         top: 1px;
@@ -220,5 +220,23 @@
     .chat-avatarName {
         width: 40px;
         height: 40px;
+    }
+}
+
+@media (max-width: 425px) {
+    .chatlist-chat {
+        padding: 10px;
+    }
+    .chatlist-chat:not(:last-child) {
+        margin-bottom: 10px;
+    }
+    .chatlist-chat__header:not(:last-child) {
+        margin-bottom: 10px;
+    }
+    .chat-info__username {
+        font-size: 16px;
+    }
+    .chat-avatar {
+        margin-right: 10px;
     }
 }

@@ -30,7 +30,7 @@ const ChatsMenu = (props) => {
             <div className={styles.chats__wr}>
                 <div className={styles["chats-header"]}>
                     <div className={styles["chats-header__info"]}>
-                        <div className={styles["header-info__title"]}>Chats</div>
+                        <h2 className={styles["header-info__title"]}>Chats</h2>
                         <div className={styles["header-info__select"]}>
                             <h2 className={styles["select-title"]}>Recent Chats</h2>
                             <div className={styles["select-img"]}>
@@ -39,10 +39,7 @@ const ChatsMenu = (props) => {
                         </div>
                     </div>
                     <div className={styles["chats-header__button"]}>
-                        <div className={styles["chats-header__button-img"]}>
-                            <SvgGenerator id="plus" />
-                        </div>
-                        <input type="button" value="Create New Chat" />
+                        <h2 className={styles["chats-header__button-title"]}>Create New Chat</h2>
                     </div>
                 </div>
                 <div className={styles["chats-search"]}>
