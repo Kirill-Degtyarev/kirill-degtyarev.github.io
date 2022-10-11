@@ -19,7 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 29px 40px 29px 63px;
+    padding: 14px 20px;
     background-color: #fafbff;
     border-radius: 6px 6px 0px 0px;
     border-bottom: 2px solid rgba(112, 124, 151, 0.1);
@@ -94,22 +94,37 @@
 }
 
 .addition-attachments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 59px;
+    height: 59px;
+    border-radius: 50%;
     background-color: #ffffff;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.03), 0px 7px 25px rgba(42, 139, 242, 0.03),
         0px 5px 25px rgba(42, 139, 242, 0.07);
     margin-right: 21px;
-    padding: 15.43px 17.96px 16.49px 17.96px;
-    border-radius: 50%;
+    /* padding: 15.43px 17.96px 16.49px 17.96px; */
     cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .addition-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 59px;
+    height: 59px;
+    border-radius: 50%;
     background-color: #ffffff;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.03), 0px 7px 25px rgba(42, 139, 242, 0.03),
         0px 5px 25px rgba(42, 139, 242, 0.07);
-    padding: 16.46px 25.455px 16.46px 25.455px;
-    border-radius: 50%;
     cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .chat-body {
@@ -147,8 +162,9 @@
 
 .chat-footer {
     border-top: 2px solid rgba(112, 124, 151, 0.1);
-    padding: 20px 63px 31.74px 63px;
-    width: 48.5vw;
+    padding: 14px 20px;
+    min-width: 100%;
+    max-width: 100%;
 }
 
 .chat-footer__body {
@@ -163,7 +179,6 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    margin-right: 22.19px;
 }
 
 .add-menu-video {
@@ -196,8 +211,12 @@
 }
 
 .footer-add__plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42.25px;
+    height: 42.25px;
     cursor: pointer;
-    padding: 12.6325px 13.1375px 10.6325px 13.1375px;
     border-radius: 50%;
     background: linear-gradient(325.78deg, #2a8bf2 14.76%, #7cb8f7 87.3%);
 }
@@ -218,15 +237,14 @@
 }
 
 .footer-input {
-    width: 33.5vw;
+    width: 100%;
     display: flex;
     align-items: center;
-    margin: auto;
+    margin: auto 20px;
     color: rgba(112, 124, 151, 0.5);
 }
 
 .message-input {
-    width: 100%;
     max-height: 200px;
     min-height: 30px;
     font-size: 20px !important;
@@ -235,6 +253,8 @@
     overflow-x: hidden;
     overflow-y: scroll;
     overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
 }
 
 .footer-input div:empty::before {
@@ -245,10 +265,10 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin-left: 10px;
 }
 
 .footer-attach__smile {
+    display: flex;
     margin-right: 33px;
 }
 
@@ -256,14 +276,15 @@
 }
 
 .send-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42.25px;
+    height: 42.25px;
     background: linear-gradient(325.78deg, #2a8bf2 14.76%, #7cb8f7 87.3%);
     box-shadow: 4px 4px 25px rgba(42, 139, 242, 0.15), 2px 2px 25px rgba(42, 139, 242, 0.05),
         4px 6px 10px rgba(42, 139, 242, 0.15);
     border-radius: 50%;
-    padding: 12.595px 13.09px 8.825px 11.33px;
-}
-
-.send-message__img {
 }
 
 .footer-attach__picker {
@@ -272,17 +293,47 @@
     left: -170px;
 }
 
-@media (max-width: 1600px) {
-    /* .chat__container {
-        height: 95vh;
-        max-width: 700px;
-    } */
-
-    .chat-header {
-        padding: 14px 20px 14px 20px;
+@media (max-width: 991px) {
+    .chat__container {
+        min-width: 58vw;
     }
-
+    .chat-header {
+        padding: 7px 10px;
+    }
+    .header-userinfo__avatar img {
+        width: 45px;
+        height: 45px;
+    }
+    .header-userinfo__avatarName {
+        width: 45px;
+        height: 45px;
+    }
+    .header-userinfo__avatar {
+        margin-right: 10px;
+    }
+    .addition-menu {
+        width: 45px;
+        height: 45px;
+    }
+    .addition-attachments {
+        width: 45px;
+        height: 45px;
+        margin-right: 10px;
+    }
     .chat-footer {
-        padding: 14px 20px 14px 20px;
+        padding: 7px 10px;
+    }
+    .footer-attach__smile {
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .chat__container {
+        position: absolute;
+        z-index: 10;
+        top: -10px;
+        left: 0;
+        height: 100vh;
     }
 }

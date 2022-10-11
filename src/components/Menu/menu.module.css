@@ -313,9 +313,6 @@
     }
 }
 
-@media (max-width: 760px) {
-}
-
 @media (max-width: 475px) {
     .menu::-webkit-scrollbar {
         width: 2.5px;

@@ -196,9 +196,7 @@ const ChatBody = (props) => {
                         </div>
                         <div className={styles["footer-attach__send"]}>
                             <button className={styles["send-message"]} onClick={sendMessage}>
-                                <span className={styles["send-message__img"]}>
-                                    <SvgGenerator id="send" />
-                                </span>
+                                <SvgGenerator id="send" />
                             </button>
                         </div>
                     </div>

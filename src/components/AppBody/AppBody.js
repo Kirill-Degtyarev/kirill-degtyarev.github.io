@@ -10,7 +10,7 @@ import styles from "./AppBody.module.css";
 const AppBody = (props) => {
     const currentUser = useAuth();
     return (
-        <div className={currentUser ? "page-app" : styles["container-loader"]}>
+        <div className={currentUser ? styles["page-app"] : styles["container-loader"]}>
             {currentUser ? (
                 <div className={styles["app-body"]}>
                     <Menu logoutHandler={props.logoutHandler} />
