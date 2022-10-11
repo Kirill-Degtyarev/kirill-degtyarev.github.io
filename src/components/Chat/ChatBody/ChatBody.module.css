@@ -332,8 +332,8 @@
     .chat__container {
         position: absolute;
         z-index: 10;
-        top: -10px;
+        top: 0px;
         left: 0;
-        height: 100vh;
+        height: 95vh;
     }
 }
