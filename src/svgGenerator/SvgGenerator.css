@@ -523,3 +523,9 @@
     height: 220px;
     display: inline-block;
 }
+
+.arrow-back {
+    width: 15px;
+    height: 10px;
+    display: inline-block;
+}

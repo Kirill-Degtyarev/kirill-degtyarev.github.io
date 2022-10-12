@@ -706,6 +706,22 @@ const SvgGenerator = (props) => {
                     />
                 </svg>
             );
+        case "arrow-back":
+            return (
+                <svg
+                    width="15px"
+                    height="10px"
+                    viewBox="0 0 15 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="arrow-back"
+                >
+                    <path
+                        d="M2 5L1.29289 4.29289L0.585786 5L1.29289 5.70711L2 5ZM14 6C14.5523 6 15 5.55228 15 5C15 4.44772 14.5523 4 14 4V6ZM5.29289 0.292893L1.29289 4.29289L2.70711 5.70711L6.70711 1.70711L5.29289 0.292893ZM1.29289 5.70711L5.29289 9.70711L6.70711 8.29289L2.70711 4.29289L1.29289 5.70711ZM2 6H14V4H2V6Z"
+                        fill="#33363F"
+                    />
+                </svg>
+            );
         default:
             return <svg width="0" height="0"></svg>;
     }

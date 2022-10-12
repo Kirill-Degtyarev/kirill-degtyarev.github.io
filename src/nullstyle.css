@@ -30,9 +30,10 @@ aside {
 html,
 body {
     overflow: hidden;
+    /* position: fixed; */
     font-family: "Proxima Nova";
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     font-size: 100%;
     line-height: 1;
     font-size: 14px;

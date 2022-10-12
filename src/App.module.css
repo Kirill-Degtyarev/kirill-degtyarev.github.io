@@ -8,6 +8,7 @@
 }
 
 .notice__container {
+    position: relative;
     max-width: 2560px;
-    min-height: 100vh;
+    flex: 1 1 auto;
 }

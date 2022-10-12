@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../../Hooks/AuthHooks";
 
 import AvatarAction from "../../../action/AvatarAction";
@@ -71,6 +72,9 @@ const ChatBody = (props) => {
             {userCompanion.length !== 0 ? (
                 <div className={styles["chat-header"]}>
                     <div className={styles["chat-header__userinfo"]}>
+                        <Link to="/chat" className={styles["chat-header__back"]}>
+                            <SvgGenerator id="arrow-back" />
+                        </Link>
                         <div className={styles["header-userinfo__avatar"]}>
                             {userCompanion[0].online ? (
                                 <span className={`${styles["user-avatar__online"]}`}></span>
