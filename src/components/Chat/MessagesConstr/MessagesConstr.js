@@ -18,7 +18,11 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
     return (
         <>
             {!id ? (
-                <div className={styles.message}>
+                <div
+                    className={styles.message}
+                    onselectstart="return false"
+                    onmousedown="return false"
+                >
                     <div className={styles["message-content"]}>
                         {userCompanion.userAvatar ? (
                             <div className={styles["message-avatar"]}>

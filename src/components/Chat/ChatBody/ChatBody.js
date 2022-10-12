@@ -67,8 +67,9 @@ const ChatBody = (props) => {
             messageInput.dataset.placeholder = "Сan't send empty message";
         }
     };
+
     return (
-        <div className={styles["chat__container"]}>
+        <div className={styles["chat__container"]} id="chat">
             {userCompanion.length !== 0 ? (
                 <div className={styles["chat-header"]}>
                     <div className={styles["chat-header__userinfo"]}>
@@ -148,8 +149,22 @@ const ChatBody = (props) => {
             <div className={styles["chat-footer"]}>
                 <div className={styles["chat-footer__body"]}>
                     <div className={styles["footer-add"]}>
+                        <div
+                            className={styles["footer-add__plus"]}
+                            onClick={() => {
+                                setShowAddFile(!showAddFile);
+                            }}
+                        >
+                            <SvgGenerator id="plus" class="footer-plus" />
+                        </div>
                         {showAddFile ? (
-                            <div className={styles["footer-add__menu"]}>
+                            <div
+                                className={
+                                    showAddFile
+                                        ? `${styles["footer-add__menu"]} ${styles["open__add-menu"]}`
+                                        : `${styles["footer-add__menu"]} `
+                                }
+                            >
                                 <div className={styles["add-menu-video"]}>
                                     <SvgGenerator id="video-add" />
                                 </div>
@@ -163,14 +178,6 @@ const ChatBody = (props) => {
                         ) : (
                             ""
                         )}
-                        <div
-                            className={styles["footer-add__plus"]}
-                            onClick={() => {
-                                setShowAddFile(!showAddFile);
-                            }}
-                        >
-                            <SvgGenerator id="plus" class="footer-plus" />
-                        </div>
                     </div>
                     <div className={styles["footer-input"]}>
                         <div
