@@ -78,6 +78,7 @@
     letter-spacing: 0.015rem;
     line-height: 120%;
     color: #ffffff;
+    white-space: pre-wrap;
     -webkit-user-select: all;
     user-select: all;
     -webkit-user-drag: all;
@@ -112,7 +113,17 @@
     line-height: 120%;
     color: #707c97;
     overflow-wrap: break-word;
+    white-space: pre-wrap;
     -webkit-user-select: all;
     user-select: all;
     -webkit-user-drag: all;
+}
+
+@media (max-width: 475px) {
+    .message-body {
+        max-width: 340px;
+    }
+    .message-cu__content {
+        max-width: 340px;
+    }
 }

@@ -108,6 +108,9 @@
 }
 
 .recovery__form-log input[type="button"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     width: 100%;
     background-color: #304ffd;
     padding: 10px 0px;

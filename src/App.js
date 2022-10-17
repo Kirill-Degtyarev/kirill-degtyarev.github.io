@@ -11,7 +11,7 @@ import Contact from "./components/Contact/Contact";
 import Notifications from "./components/Notifications/Notifications";
 import Calendar from "./components/Calendar/Calendar";
 import Settings from "./components/Settings/Settings";
-import LoginBody from "./components/Entry/Login/Login";
+import Login from "./components/Entry/Login/Login";
 import Registration from "./components/Entry/Registartion/Registration";
 import Recovery from "./components/Entry/Recovery/Recovery";
 import NotFound from "./components/NotFound/NotFound";
@@ -36,7 +36,6 @@ function App() {
         localStorage.setItem("isLogedIn", "1");
         setUserLogeed(true);
         navigate("/home");
-        // AuthAction.setOnline(true);
     };
 
     const logoutHandler = async () => {
@@ -61,7 +60,7 @@ function App() {
                     </Route>
                 ) : (
                     <>
-                        <Route path="/login" element={<LoginBody userLoged={userLoged} />} />
+                        <Route path="/login" element={<Login userLoged={userLoged} />} />
                         <Route
                             path="/registration"
                             element={<Registration userLoged={userLoged} />}
