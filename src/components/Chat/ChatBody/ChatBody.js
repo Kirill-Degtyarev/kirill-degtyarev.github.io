@@ -62,6 +62,7 @@ const ChatBody = (props) => {
             await ChatAction.sendMessage(messageValue, setMessageValue, chat.key, currentUser.uid);
             anchorChat.scrollIntoView({ behavior: "smooth", block: "end" });
             messageInput.dataset.placeholder = "Type a message here";
+            messageInput.innerText = "";
         } else {
             messageInput.innerText = "";
             messageInput.dataset.placeholder = "Сan't send empty message";
