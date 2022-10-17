@@ -163,6 +163,9 @@
     word-wrap: break-word;
     -webkit-box-orient: vertical;
     box-orient: vertical;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
     font-size: 16px;
     line-height: 120%;
     color: #707c97;

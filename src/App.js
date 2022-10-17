@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import AuthAction from "./action/AuthAction";
-
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { useAuth } from "./Hooks/AuthHooks";
 
 import AppBody from "./components/AppBody/AppBody";
 import Home from "./components/Home/Home";
@@ -22,6 +22,13 @@ import "./fonts/fonts.css";
 function App() {
     const [userIsLoged, setUserLogeed] = useState(false);
     const navigate = useNavigate();
+    const currentUser = useAuth();
+
+    useEffect(() => {
+        if (currentUser && !userIsLoged) {
+            AuthAction.updateDbUser(currentUser, userLoged);
+        }
+    }, [currentUser]);
 
     useEffect(() => {
         const storedLoginInfo = localStorage.getItem("isLogedIn");

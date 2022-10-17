@@ -27,17 +27,9 @@ export default class AuthAction {
         }
     }
 
-    static async login(userEmail, password, userLoged, online) {
+    static async login(userEmail, password) {
         try {
             await signInWithEmailAndPassword(auth, userEmail, password);
-            const userDocs = await getDocs(
-                query(collection(db, "users"), where("userId", "==", auth.currentUser.uid))
-            );
-            updateDoc(doc(collection(db, "users"), userDocs.docs[0].id), {
-                online,
-                lastOnline: null,
-            });
-            userLoged();
         } catch (error) {
             console.log(error);
         }
@@ -45,30 +37,28 @@ export default class AuthAction {
 
     static async loginWithGoogle(userLoged) {
         const provider = new GoogleAuthProvider();
+
         if (
             /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
                 navigator.userAgent
             )
         ) {
-            try {
-                signInWithRedirect(auth, provider);
-            } catch (error) {
-                alert(error.message);
-            }
+            signInWithRedirect(auth, provider);
         } else {
+            alert("pc");
             signInWithPopup(auth, provider)
                 .then(async (result) => {
                     const user = result.user;
-                    this.updateDbWithGoogle(user, userLoged);
+                    this.updateDbUser(user, userLoged);
                 })
                 .catch((error) => {
                     const errorCode = error.code;
-                    console.log(errorCode);
+                    alert(errorCode);
                 });
         }
     }
 
-    static async updateDbWithGoogle(user, userLoged) {
+    static async updateDbUser(user, userLoged) {
         const userDocs = await getDocs(
             query(collection(db, "users"), where("userId", "==", user.uid))
         );

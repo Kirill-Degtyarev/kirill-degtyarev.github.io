@@ -1,21 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
 import AuthAction from "../../../action/AuthAction";
-import { useAuth } from "../../../Hooks/AuthHooks";
 
 import styles from "./Login.module.css";
 
 const Login = (props) => {
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
-    const currentUser = useAuth();
-
-    useEffect(() => {
-        if (currentUser) {
-            AuthAction.updateDbWithGoogle(currentUser, props.userLoged);
-        }
-    }, [currentUser]);
 
     const loginUserHandler = async (e) => {
         e.preventDefault();
@@ -34,7 +26,7 @@ const Login = (props) => {
             alert("Password is incorrect");
         }
 
-        await AuthAction.login(email, password, props.userLoged, true);
+        await AuthAction.login(email, password);
     };
 
     return (
