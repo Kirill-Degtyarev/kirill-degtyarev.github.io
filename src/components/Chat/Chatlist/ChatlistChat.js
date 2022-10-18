@@ -90,15 +90,19 @@ const ChatlistChat = (props) => {
                                 </span>
                             </div>
                         </div>
-                        {props.chatsInfo.lastMessages.content ? (
+                        {props.chatsInfo.lastMessages[0].content ? (
                             <span className={styles["last-messages"]}>
-                                {getTime(props.chatsInfo.lastMessages.sendLastTime)}
+                                {getTime(
+                                    props.chatsInfo.lastMessages[
+                                        props.chatsInfo.lastMessages.length - 1
+                                    ].sendLastTime
+                                )}
                             </span>
                         ) : (
                             ""
                         )}
                     </div>
-                    {props.chatsInfo.lastMessages.content ? (
+                    {props.chatsInfo.lastMessages.length !== 0 ? (
                         <div className={styles["chatlist-chat__messages"]}>
                             <div className={styles.message}>
                                 <div className={styles["chat-messages"]}>
@@ -110,16 +114,20 @@ const ChatlistChat = (props) => {
                                             {props.message}
                                         </div>
                                     ) : (
-                                        props.chatsInfo.lastMessages.content
+                                        props.chatsInfo.lastMessages[
+                                            props.chatsInfo.lastMessages.length - 1
+                                        ].content
                                     )}
                                 </div>
-                                {/* {+props.messagesCount !== 0 ? (
-                                <div className={styles["messages-count"]}>
-                                    <span>{props.messagesCount}</span>
-                                </div>
-                            ) : (
-                                ""
-                            )} */}
+                                {props.chatsInfo.lastMessages[0].senderMessage !==
+                                    currentUser.uid &&
+                                props.chatsInfo.lastMessages[0].content !== null ? (
+                                    <div className={styles["messages-count"]}>
+                                        <span>{props.chatsInfo.lastMessages.length}</span>
+                                    </div>
+                                ) : (
+                                    ""
+                                )}
                             </div>
                             {props.files ? (
                                 <div className={styles["message-file"]}>

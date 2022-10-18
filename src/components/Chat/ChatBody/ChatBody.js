@@ -7,6 +7,7 @@ import AvatarAction from "../../../action/AvatarAction";
 import ChatAction from "../../../action/ChatAction";
 import UserAction from "../../../action/UserAction";
 import LastOnlineAction from "../../../action/LastOnlineAction";
+import FileAction from "../../../action/FileAction";
 
 import Picker from "emoji-picker-react";
 
@@ -20,7 +21,8 @@ const ChatBody = (props) => {
     const [showEmoji, setShowEmoji] = useState(false);
     const [showAddFile, setShowAddFile] = useState(false);
     const [userCompanion, setUserCompanion] = useState([]);
-    const [chat, setChat] = useState();
+    const [chat, setChat] = useState(null);
+    const [addFile, setAddFile] = useState([]);
     const params = useParams();
     const currentUser = useAuth();
 
@@ -36,11 +38,12 @@ const ChatBody = (props) => {
     }, [chat]);
 
     useEffect(() => {
+        const messageInput = document.getElementById("message-input");
+
         if (currentUser && userCompanion.length !== 0) {
             ChatAction.getChat(currentUser.displayName, userCompanion[0].userDisplayName, setChat);
         }
         setShowAddFile(false);
-        const messageInput = document.getElementById("message-input");
         messageInput.innerText = "";
     }, [currentUser, userCompanion]);
 
@@ -54,15 +57,19 @@ const ChatBody = (props) => {
     //     setMessageValue(messageInput.innerHTML);
     // };
 
+    const saveAddFile = async (e) => {
+        const newFile = e.target.files;
+    };
+
     const sendMessage = async () => {
         const messageInput = document.getElementById("message-input");
         const anchorChat = document.getElementById("anchor-scroll");
 
         if (messageValue !== "") {
-            await ChatAction.sendMessage(messageValue, setMessageValue, chat.key, currentUser.uid);
-            anchorChat.scrollIntoView({ behavior: "smooth", block: "end" });
             messageInput.dataset.placeholder = "Type a message here";
             messageInput.innerText = "";
+            await ChatAction.sendMessage(messageValue, setMessageValue, chat.key, currentUser.uid);
+            anchorChat.scrollIntoView({ behavior: "smooth", block: "end" });
         } else {
             messageInput.innerText = "";
             messageInput.dataset.placeholder = "Сan't send empty message";
@@ -166,15 +173,44 @@ const ChatBody = (props) => {
                                         : `${styles["footer-add__menu"]} `
                                 }
                             >
-                                <div className={styles["add-menu-video"]}>
-                                    <SvgGenerator id="video-add" />
-                                </div>
-                                <div className={styles["add-menu-photo"]}>
-                                    <SvgGenerator id="photo-add" />
-                                </div>
-                                <div className={styles["add-menu-file"]}>
-                                    <SvgGenerator id="file-add" />
-                                </div>
+                                <label htmlFor="video-file">
+                                    <div className={styles["add-menu-video"]}>
+                                        <SvgGenerator id="video-add" />
+                                        <input
+                                            type="file"
+                                            name="video"
+                                            id="video-file"
+                                            accept="video/*"
+                                            style={{ display: "none" }}
+                                            onChange={saveAddFile}
+                                        />
+                                    </div>
+                                </label>
+                                <label htmlFor="photo-file">
+                                    <div className={styles["add-menu-photo"]}>
+                                        <input
+                                            type="file"
+                                            name="phote"
+                                            id="photo-file"
+                                            accept="image/*"
+                                            style={{ display: "none" }}
+                                            onChange={saveAddFile}
+                                        />
+                                        <SvgGenerator id="photo-add" />
+                                    </div>
+                                </label>
+                                <label htmlFor="docs-file">
+                                    <div className={styles["add-menu-file"]}>
+                                        <input
+                                            type="file"
+                                            name="docs"
+                                            id="docs-file"
+                                            style={{ display: "none" }}
+                                            onChange={saveAddFile}
+                                        />
+                                        <SvgGenerator id="file-add" />
+                                    </div>
+                                </label>
                             </div>
                         ) : (
                             ""
@@ -187,6 +223,19 @@ const ChatBody = (props) => {
                             onInput={(e) => {
                                 setMessageValue(e.target.innerText.trim());
                             }}
+                            onKeyDown={(e) => {
+                                if (
+                                    !/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+                                        navigator.userAgent
+                                    )
+                                ) {
+                                    if (e.key === "Enter" && !e.shiftKey) {
+                                        e.preventDefault();
+                                        sendMessage();
+                                    }
+                                }
+                            }}
+                            tabIndex={0}
                             contentEditable="true"
                             data-placeholder="Type a message here"
                         ></div>
@@ -213,6 +262,17 @@ const ChatBody = (props) => {
                         </div>
                     </div>
                 </div>
+                {userCompanion.length !== 0 && false ? (
+                    <div className={styles["chat-footer__addFile"]}>
+                        <img
+                            src={userCompanion[0].userAvatar}
+                            style={{ width: 50 + "px" }}
+                            alt="avatr"
+                        />
+                    </div>
+                ) : (
+                    ""
+                )}
             </div>
         </div>
     );

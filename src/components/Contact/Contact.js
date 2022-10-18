@@ -11,8 +11,6 @@ const Contact = (props) => {
     const currentUser = useAuth();
     const [users, setUsers] = useState();
 
-    console.log(users);
-
     useEffect(() => {
         UserAction.getUsers(setUsers);
     }, []);

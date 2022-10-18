@@ -139,7 +139,6 @@ const Menu = (props) => {
                                         className={styles["profile-info__body"]}
                                         onClick={() => {
                                             setChangeAvatar(!changeAvatar);
-                                            console.log(changeAvatar);
                                         }}
                                     >
                                         <div className={styles["profile-info__username"]}>

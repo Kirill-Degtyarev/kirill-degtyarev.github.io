@@ -6,6 +6,7 @@ import {
     query,
     updateDoc,
     getDocs,
+    getDoc,
     arrayUnion,
 } from "firebase/firestore";
 import { db } from "../config/configFirebase";
@@ -29,15 +30,19 @@ export default class ChatAction {
 
             if (!chats.some(chatIsCreated)) {
                 const date = new Date(3600 * 24 * 1000).toISOString();
+
                 (async () => {
                     await setDoc(doc(db, "chat", `${user1.displayName}+${user2.userDisplayName}`), {
                         userID_1: user1.uid,
                         userID_2: user2.userId,
                         key: user1.displayName + "+" + user2.userDisplayName,
-                        lastMessages: {
-                            content: null,
-                            sendLastTime: date,
-                        },
+                        lastMessages: [
+                            {
+                                content: null,
+                                sendLastTime: date,
+                                senderMessage: null,
+                            },
+                        ],
                         messages: [],
                     });
                 })();
@@ -83,8 +88,10 @@ export default class ChatAction {
 
     static async sendMessage(message, setMessageValue, chatID, senderMessageUid) {
         const date = new Date().toISOString();
+        const chat = await getDoc(doc(db, "chat", chatID));
         const messages = message;
         setMessageValue("");
+
         await updateDoc(doc(collection(db, "chat"), chatID), {
             messages: arrayUnion({
                 key: Math.random(),
@@ -93,12 +100,27 @@ export default class ChatAction {
                 sendTime: date,
             }),
         });
-
-        await updateDoc(doc(collection(db, "chat"), chatID), {
-            lastMessages: {
-                content: messages,
-                sendLastTime: date,
-            },
-        });
+        if (
+            chat.data().lastMessages[0] &&
+            chat.data().lastMessages[0].senderMessage === senderMessageUid
+        ) {
+            await updateDoc(doc(collection(db, "chat"), chatID), {
+                lastMessages: arrayUnion({
+                    content: messages,
+                    sendLastTime: date,
+                    senderMessage: senderMessageUid,
+                }),
+            });
+        } else {
+            await updateDoc(doc(collection(db, "chat"), chatID), {
+                lastMessages: [
+                    {
+                        content: messages,
+                        sendLastTime: date,
+                        senderMessage: senderMessageUid,
+                    },
+                ],
+            });
+        }
     }
 }
