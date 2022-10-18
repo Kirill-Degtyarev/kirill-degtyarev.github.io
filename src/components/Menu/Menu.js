@@ -82,8 +82,6 @@ const Menu = (props) => {
     };
 
     const openMobileMenu = (e) => {
-        // const menu = document.getElementById("menu");
-        // menu.classList.add();
         setOpenMenu(!openMenu);
     };
 
@@ -100,105 +98,120 @@ const Menu = (props) => {
     ));
 
     return (
-        <div className={`${styles.menu} ${openMenu ? styles["mobile-menu"] : ""}`} id="menu">
-            <div className={styles["menu-body"]}>
-                <div
-                    className={`${styles["menu-burger"]} ${openMenu ? styles["close-menu"] : ""}`}
-                    onClick={openMobileMenu}
-                >
-                    <span className={styles["menu-burger__line"]}></span>
-                    <span className={styles["menu-burger__line"]}></span>
-                    <span className={styles["menu-burger__line"]}></span>
-                </div>
-                <div className={`${styles["menu-body__profile"]} ${styles.profile}`}>
-                    {currentUser ? (
-                        <>
-                            <div className={styles["profile-avatar"]}>
-                                {newAvatarUrl ? (
-                                    <img src={newAvatarUrl} alt="avatar" />
-                                ) : currentUser.photoURL ? (
-                                    <img src={currentUser.photoURL} alt="avatar" />
-                                ) : (
-                                    <div className={styles["text-avatar"]}>
-                                        {AvatarAction.getAvatarByUserName(currentUser.displayName)}
-                                    </div>
-                                )}
-                            </div>
-                            <div className={styles["profile-info"]}>
-                                <div
-                                    className={styles["profile-info__body"]}
-                                    onClick={() => {
-                                        setChangeAvatar(!changeAvatar);
-                                        console.log(changeAvatar);
-                                    }}
-                                >
-                                    <div className={styles["profile-info__username"]}>
-                                        {currentUser.displayName}
-                                    </div>
-                                    <div className={styles["profile-info__svg"]}>
-                                        <SvgGenerator
-                                            id="arrow-down"
-                                            class={changeAvatar ? `${styles["active-item"]}` : ""}
-                                            stroke="#0D1C2E"
-                                        />
-                                    </div>
-                                </div>
-                                {changeAvatar ? (
-                                    <div
-                                        className={`${styles["profile-info__action"]} ${styles.action}`}
-                                    >
-                                        <div className={styles["action-avatar"]}>
-                                            <input
-                                                id="change-avatar"
-                                                type="file"
-                                                accept="image/*"
-                                                style={{ display: "none" }}
-                                                onChange={uploadNewAvatar}
-                                            />
-                                            <label htmlFor="change-avatar">
-                                                Change Avatar <SvgGenerator id="camera_light" />
-                                            </label>
-                                        </div>
-
-                                        {newAvatar ? (
-                                            <div className={styles["action-btn"]}>
-                                                <input
-                                                    type="button"
-                                                    onClick={saveNewAvatar}
-                                                    value="Save"
-                                                    className={styles["action-btn__save"]}
-                                                />
-                                                <input
-                                                    type="button"
-                                                    onClick={cancelNewAvatar}
-                                                    value="Cancel"
-                                                    className={styles["action-btn__cancel"]}
-                                                />
-                                            </div>
-                                        ) : (
-                                            ""
-                                        )}
-                                    </div>
-                                ) : (
-                                    ""
-                                )}
-                            </div>
-                        </>
-                    ) : (
-                        ""
-                    )}
-                </div>
-                <ul className={styles["menu-body__list"]}>{menuList}</ul>
-            </div>
-            <div className={styles["menu-footer"]}>
-                <div
-                    className={`${styles["menu-footer__btn"]} ${styles["footer-btn"]}`}
-                    onClick={() => props.logoutHandler()}
-                >
-                    <div className={styles["footer-btn__icon"]}>
-                        <SvgGenerator id="logout" />
+        <div
+            className={openMenu ? styles["shadow-bg"] : "shadow"}
+            onClick={(e) => {
+                if (e.target.classList.value.includes("shadow-bg")) {
+                    openMobileMenu();
+                }
+            }}
+        >
+            <div className={`${styles.menu} ${openMenu ? styles["mobile-menu"] : ""}`} id="menu">
+                <div className={styles["menu-body"]}>
+                    <div
+                        className={`${styles["menu-burger"]} ${
+                            openMenu ? styles["close-menu"] : ""
+                        }`}
+                        onClick={openMobileMenu}
+                    >
+                        <span className={styles["menu-burger__line"]}></span>
+                        <span className={styles["menu-burger__line"]}></span>
+                        <span className={styles["menu-burger__line"]}></span>
                     </div>
-                    <div className={styles["footer-btn__text"]}>logout</div>
+                    <div className={`${styles["menu-body__profile"]} ${styles.profile}`}>
+                        {currentUser ? (
+                            <>
+                                <div className={styles["profile-avatar"]}>
+                                    {newAvatarUrl ? (
+                                        <img src={newAvatarUrl} alt="avatar" />
+                                    ) : currentUser.photoURL ? (
+                                        <img src={currentUser.photoURL} alt="avatar" />
+                                    ) : (
+                                        <div className={styles["text-avatar"]}>
+                                            {AvatarAction.getAvatarByUserName(
+                                                currentUser.displayName
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+                                <div className={styles["profile-info"]}>
+                                    <div
+                                        className={styles["profile-info__body"]}
+                                        onClick={() => {
+                                            setChangeAvatar(!changeAvatar);
+                                            console.log(changeAvatar);
+                                        }}
+                                    >
+                                        <div className={styles["profile-info__username"]}>
+                                            {currentUser.displayName}
+                                        </div>
+                                        <div className={styles["profile-info__svg"]}>
+                                            <SvgGenerator
+                                                id="arrow-down"
+                                                class={
+                                                    changeAvatar ? `${styles["active-item"]}` : ""
+                                                }
+                                                stroke="#0D1C2E"
+                                            />
+                                        </div>
+                                    </div>
+                                    {changeAvatar ? (
+                                        <div
+                                            className={`${styles["profile-info__action"]} ${styles.action}`}
+                                        >
+                                            <div className={styles["action-avatar"]}>
+                                                <input
+                                                    id="change-avatar"
+                                                    type="file"
+                                                    accept="image/*"
+                                                    style={{ display: "none" }}
+                                                    onChange={uploadNewAvatar}
+                                                />
+                                                <label htmlFor="change-avatar">
+                                                    Change Avatar <SvgGenerator id="camera_light" />
+                                                </label>
+                                            </div>
+
+                                            {newAvatar ? (
+                                                <div className={styles["action-btn"]}>
+                                                    <input
+                                                        type="button"
+                                                        onClick={saveNewAvatar}
+                                                        value="Save"
+                                                        className={styles["action-btn__save"]}
+                                                    />
+                                                    <input
+                                                        type="button"
+                                                        onClick={cancelNewAvatar}
+                                                        value="Cancel"
+                                                        className={styles["action-btn__cancel"]}
+                                                    />
+                                                </div>
+                                            ) : (
+                                                ""
+                                            )}
+                                        </div>
+                                    ) : (
+                                        ""
+                                    )}
+                                </div>
+                            </>
+                        ) : (
+                            ""
+                        )}
+                    </div>
+                    <ul className={styles["menu-body__list"]}>{menuList}</ul>
+                </div>
+                <div className={styles["menu-footer"]}>
+                    <div
+                        className={`${styles["menu-footer__btn"]} ${styles["footer-btn"]}`}
+                        onClick={() => props.logoutHandler()}
+                    >
+                        <div className={styles["footer-btn__icon"]}>
+                            <SvgGenerator id="logout" />
+                        </div>
+                        <div className={styles["footer-btn__text"]}>logout</div>
+                    </div>
                 </div>
             </div>
         </div>
