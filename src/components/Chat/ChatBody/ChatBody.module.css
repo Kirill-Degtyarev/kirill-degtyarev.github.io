@@ -260,7 +260,14 @@
     transform: translateY(0);
     animation: openAddMenu 0.2s 1;
 }
-
+.chat-footer__addFile {
+    margin-top: 10px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
 @keyframes openAddMenu {
     0% {
         transform: translateY(60px);

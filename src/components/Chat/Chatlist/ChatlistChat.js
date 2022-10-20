@@ -102,21 +102,22 @@ const ChatlistChat = (props) => {
                             ""
                         )}
                     </div>
-                    {props.chatsInfo.lastMessages.length !== 0 ? (
+                    {props.chatsInfo.lastMessages[0].content ? (
                         <div className={styles["chatlist-chat__messages"]}>
                             <div className={styles.message}>
                                 <div className={styles["chat-messages"]}>
-                                    {props.typeMessage === "voice" ? (
+                                    {props.chatsInfo.lastMessages[
+                                        props.chatsInfo.lastMessages.length - 1
+                                    ].content.type !== "text" ? (
                                         <div className={styles["chat-messages__voice"]}>
                                             <div className={styles["messages-voice_img"]}>
-                                                <SvgGenerator id={props.action} />
+                                                <SvgGenerator id="recording-voice" />
                                             </div>
-                                            {props.message}
                                         </div>
                                     ) : (
                                         props.chatsInfo.lastMessages[
                                             props.chatsInfo.lastMessages.length - 1
-                                        ].content
+                                        ].content.value
                                     )}
                                 </div>
                                 {props.chatsInfo.lastMessages[0].senderMessage !==

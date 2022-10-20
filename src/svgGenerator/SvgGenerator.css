@@ -529,3 +529,9 @@
     height: 10px;
     display: inline-block;
 }
+
+.file_dock {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+}

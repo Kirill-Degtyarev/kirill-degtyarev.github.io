@@ -7,12 +7,14 @@ import AvatarAction from "../../../action/AvatarAction";
 import ChatAction from "../../../action/ChatAction";
 import UserAction from "../../../action/UserAction";
 import LastOnlineAction from "../../../action/LastOnlineAction";
+// eslint-disable-next-line
 import FileAction from "../../../action/FileAction";
 
 import Picker from "emoji-picker-react";
 
 import SvgGenerator from "../../../svgGenerator/SvgGenerator";
 import MessagesConstr from "../MessagesConstr/MessagesConstr";
+import FileItem from "./FileItem/FileItem";
 import styles from "./ChatBody.module.css";
 
 const ChatBody = (props) => {
@@ -33,11 +35,6 @@ const ChatBody = (props) => {
     }, [params]);
 
     useEffect(() => {
-        const anchorChat = document.getElementById("anchor-scroll");
-        anchorChat.scrollIntoView({ behavior: "auto", block: "end" });
-    }, [chat]);
-
-    useEffect(() => {
         const messageInput = document.getElementById("message-input");
 
         if (currentUser && userCompanion.length !== 0) {
@@ -46,6 +43,11 @@ const ChatBody = (props) => {
         setShowAddFile(false);
         messageInput.innerText = "";
     }, [currentUser, userCompanion]);
+
+    useEffect(() => {
+        const anchorChat = document.getElementById("anchor-scroll");
+        anchorChat.scrollIntoView({ behavior: "auto", block: "end" });
+    }, [chat]);
 
     // const onEmojiClick = (event, emojiObject) => {
     //     const messageInput = document.getElementById("message-input");
@@ -58,21 +60,50 @@ const ChatBody = (props) => {
     // };
 
     const saveAddFile = async (e) => {
-        const newFile = e.target.files;
+        if (addFile.length < 10) {
+            const newFile = e.target.files;
+            FileAction.addNewFile(newFile, addFile, setAddFile);
+        } else {
+            alert("Can't add more than 10 files");
+            return;
+        }
     };
 
     const sendMessage = async () => {
-        const messageInput = document.getElementById("message-input");
+        let content;
         const anchorChat = document.getElementById("anchor-scroll");
-
-        if (messageValue !== "") {
-            messageInput.dataset.placeholder = "Type a message here";
-            messageInput.innerText = "";
-            await ChatAction.sendMessage(messageValue, setMessageValue, chat.key, currentUser.uid);
-            anchorChat.scrollIntoView({ behavior: "smooth", block: "end" });
+        const messageInput = document.getElementById("message-input");
+        if (addFile.length === 0) {
+            if (messageValue !== "") {
+                content = [
+                    {
+                        type: "text",
+                        value: messageValue,
+                    },
+                ];
+                messageInput.dataset.placeholder = "Type a message here";
+                messageInput.innerText = "";
+                await ChatAction.sendMessage(
+                    content[0],
+                    setMessageValue,
+                    chat.key,
+                    currentUser.uid
+                );
+                anchorChat.scrollIntoView({ behavior: "smooth", block: "end" });
+            } else {
+                messageInput.innerText = "";
+                messageInput.dataset.placeholder = "Сan't send empty message";
+            }
         } else {
-            messageInput.innerText = "";
-            messageInput.dataset.placeholder = "Сan't send empty message";
+            const newFiles = await FileAction.sendingFiles(chat.key, addFile, setAddFile);
+            content = [
+                {
+                    type: newFiles[0].fileType,
+                    value: newFiles[0],
+                },
+            ];
+            await ChatAction.sendMessage(content[0], setMessageValue, chat.key, currentUser.uid);
+            anchorChat.scrollIntoView({ behavior: "smooth", block: "end" });
         }
     };
 
@@ -173,7 +204,7 @@ const ChatBody = (props) => {
                                         : `${styles["footer-add__menu"]} `
                                 }
                             >
-                                <label htmlFor="video-file">
+                                {/* <label htmlFor="video-file">
                                     <div className={styles["add-menu-video"]}>
                                         <SvgGenerator id="video-add" />
                                         <input
@@ -185,7 +216,7 @@ const ChatBody = (props) => {
                                             onChange={saveAddFile}
                                         />
                                     </div>
-                                </label>
+                                </label> */}
                                 <label htmlFor="photo-file">
                                     <div className={styles["add-menu-photo"]}>
                                         <input
@@ -262,13 +293,11 @@ const ChatBody = (props) => {
                         </div>
                     </div>
                 </div>
-                {userCompanion.length !== 0 && false ? (
+                {addFile.length !== 0 ? (
                     <div className={styles["chat-footer__addFile"]}>
-                        <img
-                            src={userCompanion[0].userAvatar}
-                            style={{ width: 50 + "px" }}
-                            alt="avatr"
-                        />
+                        {addFile.map((item) => (
+                            <FileItem item={item} key={item.fileName} />
+                        ))}
                     </div>
                 ) : (
                     ""

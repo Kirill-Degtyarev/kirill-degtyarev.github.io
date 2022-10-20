@@ -45,23 +45,4 @@ export default class AvatarAction {
             });
         }
     }
-
-    // static async saveProfileImg(user) {
-    //     const storage = getStorage();
-    //     const fileRef = ref(storage, `users/avatar/${user.displayName}/` + user.uid);
-
-    //     const photoURL = await getDownloadURL(fileRef);
-
-    //     const users = await getDocs(
-    //         query(collection(db, "users"), where("userId", "==", user.uid))
-    //     );
-
-    //     updateDoc(doc(collection(db, "users"), users.docs[0].id), {
-    //         userAvatar: photoURL,
-    //     });
-
-    //     updateProfile(user, {
-    //         photoURL,
-    //     });
-    // }
 }

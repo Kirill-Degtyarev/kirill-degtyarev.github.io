@@ -22,8 +22,16 @@ const ChatsMenu = (props) => {
     if (chats) {
         chats.sort(function(a, b) {
             return (
-                new Date(b.lastMessages[b.lastMessages.length - 1].sendLastTime) -
-                new Date(a.lastMessages[a.lastMessages.length - 1].sendLastTime)
+                new Date(
+                    b.lastMessages[
+                        b.lastMessages.length === 1 ? 0 : b.lastMessages.length - 1
+                    ].sendLastTime
+                ) -
+                new Date(
+                    a.lastMessages[
+                        a.lastMessages.length === 1 ? 0 : a.lastMessages.length - 1
+                    ].sendLastTime
+                )
             );
         });
     }

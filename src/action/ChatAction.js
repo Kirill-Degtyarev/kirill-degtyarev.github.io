@@ -86,16 +86,16 @@ export default class ChatAction {
         };
     }
 
-    static async sendMessage(message, setMessageValue, chatID, senderMessageUid) {
+    static async sendMessage(content, setMessageValue, chatID, senderMessageUid) {
         const date = new Date().toISOString();
         const chat = await getDoc(doc(db, "chat", chatID));
-        const messages = message;
+        // const messages = message;
         setMessageValue("");
-
         await updateDoc(doc(collection(db, "chat"), chatID), {
             messages: arrayUnion({
                 key: Math.random(),
-                messageText: messages,
+                content: content,
+                // messageText: messages,
                 senderMessage: senderMessageUid,
                 sendTime: date,
             }),
@@ -106,7 +106,7 @@ export default class ChatAction {
         ) {
             await updateDoc(doc(collection(db, "chat"), chatID), {
                 lastMessages: arrayUnion({
-                    content: messages,
+                    content: content,
                     sendLastTime: date,
                     senderMessage: senderMessageUid,
                 }),
@@ -115,7 +115,7 @@ export default class ChatAction {
             await updateDoc(doc(collection(db, "chat"), chatID), {
                 lastMessages: [
                     {
-                        content: messages,
+                        content: content,
                         sendLastTime: date,
                         senderMessage: senderMessageUid,
                     },

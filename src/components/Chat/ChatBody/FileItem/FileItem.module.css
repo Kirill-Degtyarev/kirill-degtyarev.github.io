@@ -1,0 +1,60 @@
+.img__body {
+    max-height: 100px;
+    max-width: 100px;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease filter;
+}
+
+.img__body:hover {
+    filter: blur(2px);
+}
+
+.img__body img {
+    border-radius: 8px;
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 50%;
+}
+
+.document {
+    background: rgba(42, 139, 242, 0.25);
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.document__body {
+    display: flex;
+    align-items: center;
+}
+
+.document__body-img {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #2a8bf2cc;
+    margin-right: 5px;
+}
+
+.document__body-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.document-info__file-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2a8bf2;
+    margin-bottom: 2px;
+}
+
+.document-info__file-size {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2a8bf2;
+}
