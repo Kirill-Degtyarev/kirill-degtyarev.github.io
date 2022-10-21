@@ -8,6 +8,7 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
     const getSize = (size) => {
         return (size / 1024).toFixed(2) + "Mb";
     };
+
     const getTime = (time) => {
         let hours = new Date(time).getHours();
         let minute = new Date(time).getMinutes();
@@ -18,7 +19,8 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
 
         return hours + ":" + minute;
     };
-    switch (item.content.type) {
+    console.log(item);
+    switch (item.content[0].type) {
         case "text":
             return (
                 <>
@@ -39,7 +41,7 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
                                 <div className={styles["message-body"]}>
                                     <div className={styles["message-body__content"]}>
                                         <div className={styles["body-content__text"]}>
-                                            {item.content.value}
+                                            {item.content[0].value}
                                         </div>
                                     </div>
                                 </div>
@@ -50,7 +52,7 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
                         <div className={styles["message-cu"]}>
                             <div className={styles["message-cu__content"]}>
                                 <div className={styles["contetn-cu__text"]}>
-                                    {item.content.value}
+                                    {item.content[0].value}
                                 </div>
                             </div>
                             <div className={styles["message-time"]}>{getTime(item.sendTime)}</div>
@@ -75,17 +77,48 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
                                         )}
                                     </div>
                                 )}
-                                <div className={styles["message-body__img"]}>
-                                    <img src={item.content.value.fileUrl} alt="img" />
-                                </div>
+                                {item.content.length === 1 ? (
+                                    <div className={styles["message-body__img"]}>
+                                        <img
+                                            src={item.content[0].value.fileUrl}
+                                            alt={item.content[0].value.fileName}
+                                        />
+                                    </div>
+                                ) : (
+                                    item.content.map((items) => (
+                                        <div
+                                            className={styles["message-body__img"]}
+                                            key={items.value.fileName}
+                                        >
+                                            <img
+                                                src={items.value.fileUrl}
+                                                alt={items.value.fileName}
+                                            />
+                                        </div>
+                                    ))
+                                )}
                             </div>
                             <div className={styles["message-time"]}>{getTime(item.sendTime)}</div>
                         </div>
                     ) : (
                         <div className={styles["message-cu"]}>
-                            <div className={styles["message-body__img"]}>
-                                <img src={item.content.value.fileUrl} alt="img" />
-                            </div>
+                            {item.content.length === 1 ? (
+                                <div className={styles["message-body__img"]}>
+                                    <img
+                                        src={item.content[0].value.fileUrl}
+                                        alt={item.content[0].value.fileName}
+                                    />
+                                </div>
+                            ) : (
+                                item.content.map((items) => (
+                                    <div
+                                        className={styles["message-body__img"]}
+                                        key={items.value.fileName}
+                                    >
+                                        <img src={items.value.fileUrl} alt={items.value.fileName} />
+                                    </div>
+                                ))
+                            )}
                             <div className={styles["message-time"]}>{getTime(item.sendTime)}</div>
                         </div>
                     )}
@@ -117,10 +150,10 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
                                             className={`${styles["document__body-info"]} ${styles["document-info"]}`}
                                         >
                                             <div className={styles["document-info__file-name"]}>
-                                                {item.content.value.fileName}
+                                                {item.content[0].value.fileName}
                                             </div>
                                             <div className={styles["document-info__file-size"]}>
-                                                {getSize(item.content.value.fileSize)}
+                                                {getSize(item.content[0].value.fileSize)}
                                             </div>
                                         </div>
                                     </div>
@@ -139,10 +172,10 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
                                         className={`${styles["document__body-info"]} ${styles["document-info"]}`}
                                     >
                                         <div className={styles["document-info__file-name"]}>
-                                            {item.content.value.fileName}
+                                            {item.content[0].value.fileName}
                                         </div>
                                         <div className={styles["document-info__file-size"]}>
-                                            {getSize(item.content.value.fileSize)}
+                                            {getSize(item.content[0].value.fileSize)}
                                         </div>
                                     </div>
                                 </div>

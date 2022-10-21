@@ -70,7 +70,7 @@ const ChatBody = (props) => {
     };
 
     const sendMessage = async () => {
-        let content;
+        let content = [];
         const anchorChat = document.getElementById("anchor-scroll");
         const messageInput = document.getElementById("message-input");
         if (addFile.length === 0) {
@@ -83,12 +83,7 @@ const ChatBody = (props) => {
                 ];
                 messageInput.dataset.placeholder = "Type a message here";
                 messageInput.innerText = "";
-                await ChatAction.sendMessage(
-                    content[0],
-                    setMessageValue,
-                    chat.key,
-                    currentUser.uid
-                );
+                await ChatAction.sendMessage(content, setMessageValue, chat.key, currentUser.uid);
                 anchorChat.scrollIntoView({ behavior: "smooth", block: "end" });
             } else {
                 messageInput.innerText = "";
@@ -96,13 +91,13 @@ const ChatBody = (props) => {
             }
         } else {
             const newFiles = await FileAction.sendingFiles(chat.key, addFile, setAddFile);
-            content = [
-                {
-                    type: newFiles[0].fileType,
-                    value: newFiles[0],
-                },
-            ];
-            await ChatAction.sendMessage(content[0], setMessageValue, chat.key, currentUser.uid);
+            newFiles.forEach((item) => {
+                content.push({
+                    type: item.fileType,
+                    value: item,
+                });
+            });
+            await ChatAction.sendMessage(content, setMessageValue, chat.key, currentUser.uid);
             anchorChat.scrollIntoView({ behavior: "smooth", block: "end" });
         }
     };
@@ -204,7 +199,7 @@ const ChatBody = (props) => {
                                         : `${styles["footer-add__menu"]} `
                                 }
                             >
-                                {/* <label htmlFor="video-file">
+                                <label htmlFor="video-file">
                                     <div className={styles["add-menu-video"]}>
                                         <SvgGenerator id="video-add" />
                                         <input
@@ -216,7 +211,7 @@ const ChatBody = (props) => {
                                             onChange={saveAddFile}
                                         />
                                     </div>
-                                </label> */}
+                                </label>
                                 <label htmlFor="photo-file">
                                     <div className={styles["add-menu-photo"]}>
                                         <input

@@ -34,6 +34,7 @@ function App() {
         const storedLoginInfo = localStorage.getItem("isLogedIn");
         if (storedLoginInfo === "1") {
             setUserLogeed(true);
+            // navigate("/home");
         } else {
             navigate("/login");
         }
