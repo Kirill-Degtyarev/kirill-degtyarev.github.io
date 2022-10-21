@@ -19,7 +19,6 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
 
         return hours + ":" + minute;
     };
-    console.log(item);
     switch (item.content[0].type) {
         case "text":
             return (

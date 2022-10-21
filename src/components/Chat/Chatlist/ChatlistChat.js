@@ -5,20 +5,20 @@ import AvatarAction from "../../../action/AvatarAction";
 import { useAuth } from "../../../Hooks/AuthHooks";
 
 import SvgGenerator from "../../../svgGenerator/SvgGenerator";
-import FilesConstr from "../../../FilesConstr/FilesConstr";
+import LastMessagesContent from "./LastMessagesContent/LastMessagesContent";
 
 import styles from "./ChatlistChat.module.css";
 
-const ChatlistChat = (props) => {
+const ChatlistChat = ({ chatsInfo }) => {
     const [userCompanion, setUserCompanion] = useState();
     const currentUser = useAuth();
 
     useEffect(() => {
         if (currentUser) {
-            if (props.chatsInfo.userID_1 !== currentUser.uid) {
-                UserAction.getUserById(props.chatsInfo.userID_1, setUserCompanion);
+            if (chatsInfo.userID_1 !== currentUser.uid) {
+                UserAction.getUserById(chatsInfo.userID_1, setUserCompanion);
             } else {
-                UserAction.getUserById(props.chatsInfo.userID_2, setUserCompanion);
+                UserAction.getUserById(chatsInfo.userID_2, setUserCompanion);
             }
         }
     }, [currentUser]);
@@ -35,7 +35,7 @@ const ChatlistChat = (props) => {
     };
     return (
         <>
-            {userCompanion ? (
+            {userCompanion && (
                 <NavLink
                     className={({ isActive }) =>
                         isActive
@@ -44,113 +44,69 @@ const ChatlistChat = (props) => {
                     }
                     to={encodeURI(`/chat/${userCompanion[0].userDisplayName}`)}
                 >
-                    <div className={styles["chatlist-chat__header"]}>
-                        <div className={styles["chat-userinfo"]}>
-                            <div className={styles["chat-avatar"]}>
-                                {userCompanion[0].online ? (
-                                    <span className={`${styles["chat-avatar__online"]} `}></span>
-                                ) : (
-                                    ""
-                                )}
-                                {userCompanion[0].userAvatar ? (
-                                    <div className={styles["chat-avatar__img"]}>
-                                        <img src={userCompanion[0].userAvatar} alt="avatar" />
-                                    </div>
-                                ) : (
-                                    <div className={styles["chat-avatarName"]}>
-                                        {AvatarAction.getAvatarByUserName(
-                                            userCompanion[0].userDisplayName
-                                        )}
-                                    </div>
-                                )}
-                            </div>
-                            <div className={styles["chat-info"]}>
-                                <div className={styles["chat-info__username"]}>
-                                    {userCompanion[0].userDisplayName}
-                                </div>
-                                <span
-                                    className={`${styles["chat-info__actions"]} ${styles.action}`}
-                                >
-                                    {userCompanion[0].action ? (
-                                        <div className={styles["action-img"]}>
-                                            <SvgGenerator id={userCompanion[0].action} />
+                    <div className={styles["chatlist-chat__body"]}>
+                        <div className={styles["chatlist-chat__header"]}>
+                            <div className={styles["chat-userinfo"]}>
+                                <div className={styles["chat-avatar"]}>
+                                    {userCompanion[0].online && (
+                                        <span
+                                            className={`${styles["chat-avatar__online"]} `}
+                                        ></span>
+                                    )}
+                                    {userCompanion[0].userAvatar ? (
+                                        <div className={styles["chat-avatar__img"]}>
+                                            <img src={userCompanion[0].userAvatar} alt="avatar" />
                                         </div>
                                     ) : (
-                                        ""
+                                        <div className={styles["chat-avatarName"]}>
+                                            {AvatarAction.getAvatarByUserName(
+                                                userCompanion[0].userDisplayName
+                                            )}
+                                        </div>
                                     )}
-                                    <div className={styles["action-title"]}>
-                                        {userCompanion[0].action === "writes"
-                                            ? "writes"
-                                            : userCompanion[0].action === "recording-voice"
-                                            ? "records voice message"
-                                            : userCompanion[0].action === "last"
-                                            ? `last online ${props.lastTime} ago`
-                                            : ""}
+                                </div>
+                                <div className={styles["chat-info"]}>
+                                    <div className={styles["chat-info__username"]}>
+                                        {userCompanion[0].userDisplayName}
                                     </div>
-                                </span>
-                            </div>
-                        </div>
-                        {props.chatsInfo.lastMessages[0].content ? (
-                            <span className={styles["last-messages"]}>
-                                {getTime(
-                                    props.chatsInfo.lastMessages[
-                                        props.chatsInfo.lastMessages.length - 1
-                                    ].sendLastTime
-                                )}
-                            </span>
-                        ) : (
-                            ""
-                        )}
-                    </div>
-                    {props.chatsInfo.lastMessages[0].content ? (
-                        <div className={styles["chatlist-chat__messages"]}>
-                            <div className={styles.message}>
-                                <div className={styles["chat-messages"]}>
-                                    {props.chatsInfo.lastMessages[
-                                        props.chatsInfo.lastMessages.length - 1
-                                    ].content[0].type === "text" ? (
-                                        props.chatsInfo.lastMessages[
-                                            props.chatsInfo.lastMessages.length - 1
-                                        ].content[0].value
-                                    ) : (
-                                        <div className={styles["chat-messages__voice"]}>
-                                            <div className={styles["messages-voice_img"]}>
-                                                <SvgGenerator id="recording-voice" />
+                                    <span
+                                        className={`${styles["chat-info__actions"]} ${styles.action}`}
+                                    >
+                                        {userCompanion[0].action ? (
+                                            <div className={styles["action-img"]}>
+                                                <SvgGenerator id={userCompanion[0].action} />
                                             </div>
-                                        </div>
-                                    )}
+                                        ) : (
+                                            ""
+                                        )}
+                                        {/* <div className={styles["action-title"]}>
+                                            {userCompanion[0].action === "writes"
+                                                ? "writes"
+                                                : userCompanion[0].action === "recording-voice"
+                                                ? "records voice message"
+                                                : userCompanion[0].action === "last"
+                                                ? `last online ${props.lastTime} ago`
+                                                : ""}
+                                        </div> */}
+                                    </span>
                                 </div>
-                                {props.chatsInfo.lastMessages[0].senderMessage !==
-                                    currentUser.uid &&
-                                props.chatsInfo.lastMessages[0].content !== null ? (
-                                    <div className={styles["messages-count"]}>
-                                        <span>{props.chatsInfo.lastMessages.length}</span>
-                                    </div>
-                                ) : (
-                                    ""
-                                )}
                             </div>
-                            {props.files ? (
-                                <div className={styles["message-file"]}>
-                                    {props.files.map((file) => (
-                                        <FilesConstr
-                                            key={file.name}
-                                            type={file.type}
-                                            name={file.name}
-                                            count={file.count}
-                                        />
-                                    ))}
-                                </div>
-                            ) : (
-                                ""
+                            {chatsInfo.lastMessages.at(-1).content && (
+                                <span className={styles["last-messages"]}>
+                                    {getTime(chatsInfo.lastMessages.at(-1).sendLastTime)}
+                                </span>
                             )}
                         </div>
-                    ) : (
-                        ""
-                    )}
+                        {chatsInfo.lastMessages.at(-1).content && (
+                            <LastMessagesContent
+                                lastMessage={chatsInfo.lastMessages.at(-1).content}
+                                lastMessagesLength={chatsInfo.lastMessages.length}
+                                senderMessage={chatsInfo.lastMessages.at(-1).senderMessage}
+                                currentUserUid={currentUser.uid}
+                            />
+                        )}
+                    </div>
                 </NavLink>
-            ) : (
-                ""
             )}
         </>
     );
