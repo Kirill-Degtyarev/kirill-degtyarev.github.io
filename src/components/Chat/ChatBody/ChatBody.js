@@ -191,7 +191,7 @@ const ChatBody = (props) => {
                         >
                             <SvgGenerator id="plus" class="footer-plus" />
                         </div>
-                        {showAddFile ? (
+                        {showAddFile && (
                             <div
                                 className={
                                     showAddFile
@@ -238,8 +238,6 @@ const ChatBody = (props) => {
                                     </div>
                                 </label>
                             </div>
-                        ) : (
-                            ""
                         )}
                     </div>
                     <div className={styles["footer-input"]}>
@@ -267,13 +265,11 @@ const ChatBody = (props) => {
                         ></div>
                     </div>
                     <div className={styles["footer-attach"]}>
-                        {showEmoji ? (
+                        {showEmoji && (
                             <div className={styles["footer-attach__picker"]}>
                                 {/* <Picker onEmojiClick={onEmojiClick} /> */}
                                 <Picker />
                             </div>
-                        ) : (
-                            ""
                         )}
                         <div
                             className={styles["footer-attach__smile"]}

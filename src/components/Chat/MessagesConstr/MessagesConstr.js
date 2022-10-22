@@ -1,12 +1,32 @@
 import React from "react";
 import AvatarAction from "../../../action/AvatarAction";
+import FileAction from "../../../action/FileAction";
 
 import SvgGenerator from "../../../svgGenerator/SvgGenerator";
 import styles from "./MessagesConstr.module.css";
 
 const MessagesConstr = ({ userCompanion, item, id }) => {
     const getSize = (size) => {
-        return (size / 1024).toFixed(2) + "Mb";
+        const sizeB = size;
+        const sizeKb = (size / 1024).toFixed(0);
+        const sizeMb = (size / 1024 / 1024).toFixed(0);
+        const sizeGb = (size / 1024 / 1024 / 1024).toFixed(0);
+        const sizeTb = (size / 1024 / 1024 / 1024 / 1024).toFixed(0);
+        if (sizeB < 1024) {
+            return sizeB + "B";
+        }
+        if (sizeKb < 1024) {
+            return sizeKb + "Kb";
+        }
+        if (sizeMb < 1024) {
+            return sizeMb + "Mb";
+        }
+        if (sizeGb < 1024) {
+            return sizeGb + "Gb";
+        }
+        if (sizeTb < 1024) {
+            return sizeTb + "Gb";
+        }
     };
 
     const getTime = (time) => {
@@ -19,6 +39,7 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
 
         return hours + ":" + minute;
     };
+
     switch (item.content[0].type) {
         case "text":
             return (
@@ -140,8 +161,85 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
                                         )}
                                     </div>
                                 )}
+                                {item.content.length === 1 ? (
+                                    <div className={styles.document}>
+                                        <div
+                                            className={styles.document__body}
+                                            onClick={() => {
+                                                FileAction.downloadFileFromStorage(
+                                                    item.content[0].value.fileUrl
+                                                );
+                                            }}
+                                        >
+                                            <div className={styles["document__body-img"]}>
+                                                <SvgGenerator id="file_dock" />
+                                            </div>
+                                            <div
+                                                className={`${styles["document__body-info"]} ${styles["document-info"]}`}
+                                            >
+                                                <div className={styles["document-info__file-name"]}>
+                                                    {item.content[0].value.fileName}
+                                                </div>
+                                                <div className={styles["document-info__file-size"]}>
+                                                    {getSize(item.content[0].value.fileSize)}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className={styles.document}>
+                                        <div className={styles.document__many}>
+                                            {item.content.map((docs) => (
+                                                <div
+                                                    className={styles.document__body}
+                                                    onClick={() => {
+                                                        FileAction.downloadFileFromStorage(
+                                                            docs.value.fileUrl
+                                                        );
+                                                    }}
+                                                    key={docs.value.fileName}
+                                                >
+                                                    <div className={styles["document__body-img"]}>
+                                                        <SvgGenerator id="file_dock" />
+                                                    </div>
+                                                    <div
+                                                        className={`${styles["document__body-info"]} ${styles["document-info"]}`}
+                                                    >
+                                                        <div
+                                                            className={
+                                                                styles["document-info__file-name"]
+                                                            }
+                                                        >
+                                                            {docs.value.fileName}
+                                                        </div>
+                                                        <div
+                                                            className={
+                                                                styles["document-info__file-size"]
+                                                            }
+                                                        >
+                                                            {getSize(docs.value.fileSize)}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                            <div className={styles["message-time"]}>{getTime(item.sendTime)}</div>
+                        </div>
+                    ) : (
+                        <div className={styles["message-cu"]}>
+                            {item.content.length === 1 ? (
                                 <div className={styles.document}>
-                                    <div className={styles.document__body}>
+                                    <div
+                                        className={styles.document__body}
+                                        onClick={() => {
+                                            FileAction.downloadFileFromStorage(
+                                                item.content[0].value.fileUrl
+                                            );
+                                        }}
+                                    >
                                         <div className={styles["document__body-img"]}>
                                             <SvgGenerator id="file_dock" />
                                         </div>
@@ -157,28 +255,45 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className={styles["message-time"]}>{getTime(item.sendTime)}</div>
-                        </div>
-                    ) : (
-                        <div className={styles["message-cu"]}>
-                            <div className={styles.document}>
-                                <div className={styles.document__body}>
-                                    <div className={styles["document__body-img"]}>
-                                        <SvgGenerator id="file_dock" />
-                                    </div>
-                                    <div
-                                        className={`${styles["document__body-info"]} ${styles["document-info"]}`}
-                                    >
-                                        <div className={styles["document-info__file-name"]}>
-                                            {item.content[0].value.fileName}
-                                        </div>
-                                        <div className={styles["document-info__file-size"]}>
-                                            {getSize(item.content[0].value.fileSize)}
-                                        </div>
+                            ) : (
+                                <div className={styles.document}>
+                                    <div className={styles.document__many}>
+                                        {item.content.map((docs) => (
+                                            <div
+                                                className={styles.document__body}
+                                                onClick={() => {
+                                                    FileAction.downloadFileFromStorage(
+                                                        docs.value.fileUrl
+                                                    );
+                                                }}
+                                                key={docs.value.fileName}
+                                            >
+                                                <div className={styles["document__body-img"]}>
+                                                    <SvgGenerator id="file_dock" />
+                                                </div>
+                                                <div
+                                                    className={`${styles["document__body-info"]} ${styles["document-info"]}`}
+                                                >
+                                                    <div
+                                                        className={
+                                                            styles["document-info__file-name"]
+                                                        }
+                                                    >
+                                                        {docs.value.fileName}
+                                                    </div>
+                                                    <div
+                                                        className={
+                                                            styles["document-info__file-size"]
+                                                        }
+                                                    >
+                                                        {getSize(docs.value.fileSize)}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
-                            </div>
+                            )}
                             <div className={styles["message-time"]}>{getTime(item.sendTime)}</div>
                         </div>
                     )}

@@ -66,6 +66,7 @@ export default class FileAction {
     static getFileExtension(fileName) {
         return fileName.substring(fileName.lastIndexOf("."), fileName.length) || fileName;
     }
+
     static getFileType(fileExtension) {
         if (imageExtension.includes(fileExtension)) {
             return "image";
@@ -81,6 +82,7 @@ export default class FileAction {
         }
         return "other file";
     }
+
     static addNewFile(file, addFile, setAddFile) {
         const addPhotoArr = [...addFile];
         const extensions = this.getFileExtension(file[0].name);
@@ -117,6 +119,15 @@ export default class FileAction {
         }
         setAddFile([]);
         return files;
+    }
+
+    static async downloadFileFromStorage(fileUrl) {
+        const storage = getStorage();
+        const httpsReference = ref(storage, fileUrl);
+        const URL = await getDownloadURL(ref(storage, httpsReference));
+        document.location.href = URL;
+        console.log(httpsReference);
+        console.log(URL);
     }
 }
 //когда файл приходит сюда нужно его обработать и определить его тип

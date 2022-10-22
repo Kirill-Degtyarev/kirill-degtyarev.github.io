@@ -4,18 +4,16 @@ import SvgGenerator from "../svgGenerator/SvgGenerator";
 
 import styles from "./FilesConstr.module.css";
 
-const FilesConstr = (props) => {
+const FilesConstr = ({ type, lastMessage, name }) => {
     return (
-        <div className={`${styles["messages-files"]} ${styles[`${props.type}`]}`}>
+        <div className={`${styles["messages-files"]} ${styles[`${type}`]}`}>
             <div className={styles["files-docs"]}>
                 <div className={styles["files-docs__img"]}>
-                    <SvgGenerator id={props.name} />
+                    <SvgGenerator id={name} />
                 </div>
-                <h2 className={styles["files-docs__title"]}>{props.name}</h2>
-                {props.count > 1 ? (
-                    <span className={styles["files-docs__count"]}>(x{props.count})</span>
-                ) : (
-                    ""
+                <h2 className={styles["files-docs__title"]}>{name}</h2>
+                {lastMessage.length > 1 && (
+                    <span className={styles["files-docs__count"]}>(x{lastMessage.length})</span>
                 )}
             </div>
         </div>

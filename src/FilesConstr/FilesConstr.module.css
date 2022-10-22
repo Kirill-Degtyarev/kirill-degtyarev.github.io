@@ -31,35 +31,35 @@
     font-weight: 600;
 }
 
-.docs {
+.document {
     background: rgba(42, 139, 242, 0.25) !important;
 }
 
-.docs div div {
+.document div div {
     padding: 1.67px 3.33px;
 }
 
-.docs div h2 {
+.document div h2 {
     color: #2a8bf2;
 }
 
-.docs div span {
+.document div span {
     color: #2a8bf2;
 }
 
-.photo {
+.image {
     background: rgba(255, 51, 102, 0.25) !important;
 }
 
-.photo div div {
+.image div div {
     padding: 2.5px;
 }
 
-.photo div h2 {
+.image div h2 {
     color: #ff3366;
 }
 
-.photo div span {
+.image div span {
     color: #ff3366;
 }
 

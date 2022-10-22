@@ -35,9 +35,39 @@ const LastMessagesContent = ({
                 </div>
             );
         case "document":
-            return <div>doc</div>;
+            return (
+                <div className={styles["chatlist-chat__messages"]}>
+                    <div className={styles.message}>
+                        <FilesConstr
+                            type={lastMessage[0].type}
+                            name={"files"}
+                            lastMessage={lastMessage}
+                        />
+                        {senderMessage !== currentUserUid && (
+                            <div className={styles["messages-count"]}>
+                                <span>{lastMessagesLength}</span>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
         case "image":
-            return <div>img</div>;
+            return (
+                <div className={styles["chatlist-chat__messages"]}>
+                    <div className={styles.message}>
+                        <FilesConstr
+                            type={lastMessage[0].type}
+                            name={"photo"}
+                            lastMessage={lastMessage}
+                        />
+                        {senderMessage !== currentUserUid && (
+                            <div className={styles["messages-count"]}>
+                                <span>{lastMessagesLength}</span>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
         default:
             break;
     }
