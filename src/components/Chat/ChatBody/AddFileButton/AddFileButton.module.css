@@ -1,0 +1,38 @@
+.add-menu-video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42.25px;
+    height: 42.25px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #2a8bf2;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.03), 0px 7px 25px rgba(42, 139, 242, 0.03),
+        0px 5px 25px rgba(42, 139, 242, 0.07);
+}
+
+.add-menu-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42.25px;
+    height: 42.25px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #2a8bf2;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.03), 0px 7px 25px rgba(42, 139, 242, 0.03),
+        0px 5px 25px #2a8bf212;
+}
+
+.add-menu-file {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42.25px;
+    height: 42.25px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #2a8bf2;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.03), 0px 7px 25px rgba(42, 139, 242, 0.03),
+        0px 5px 25px rgba(42, 139, 242, 0.07);
+}

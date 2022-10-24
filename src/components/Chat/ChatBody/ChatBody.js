@@ -7,15 +7,39 @@ import AvatarAction from "../../../action/AvatarAction";
 import ChatAction from "../../../action/ChatAction";
 import UserAction from "../../../action/UserAction";
 import LastOnlineAction from "../../../action/LastOnlineAction";
-// eslint-disable-next-line
 import FileAction from "../../../action/FileAction";
 
 import Picker from "emoji-picker-react";
 
+import AddFileButton from "./AddFileButton/AddFileButton";
 import SvgGenerator from "../../../svgGenerator/SvgGenerator";
-import MessagesConstr from "../MessagesConstr/MessagesConstr";
+import MessagesConstr from "./MessagesConstr/MessagesConstr";
 import FileItem from "./FileItem/FileItem";
 import styles from "./ChatBody.module.css";
+
+const ADD_BUTTON = [
+    {
+        id: "video-file",
+        iconId: "video-add",
+        name: "video",
+        accept: "video/*",
+        styles: "add-menu-video",
+    },
+    {
+        id: "photo-file",
+        iconId: "photo-add",
+        name: "photo",
+        accept: "image/*",
+        styles: "add-menu-photo",
+    },
+    {
+        id: "docs-file",
+        iconId: "file-add",
+        name: "docs",
+        accept: false,
+        styles: "add-menu-file",
+    },
+];
 
 const ChatBody = (props) => {
     // const [chosenEmoji, setChosenEmoji] = useState(null);
@@ -24,6 +48,7 @@ const ChatBody = (props) => {
     const [showAddFile, setShowAddFile] = useState(false);
     const [userCompanion, setUserCompanion] = useState([]);
     const [chat, setChat] = useState(null);
+    const [addButton, setAddButton] = useState(ADD_BUTTON);
     const [addFile, setAddFile] = useState([]);
     const params = useParams();
     const currentUser = useAuth();
@@ -60,12 +85,22 @@ const ChatBody = (props) => {
     // };
 
     const saveAddFile = async (e) => {
+        const newButton = addButton.filter((n) => n.id === e.target.id);
+        setAddButton(newButton);
         if (addFile.length < 10) {
             const newFile = e.target.files;
             FileAction.addNewFile(newFile, addFile, setAddFile);
         } else {
             alert("Can't add more than 10 files");
             return;
+        }
+    };
+
+    const deleteAddFile = (item) => {
+        const newAddFile = addFile.filter((n) => n.fileName !== item.fileName);
+        setAddFile(newAddFile);
+        if (newAddFile.length === 0) {
+            setAddButton(ADD_BUTTON);
         }
     };
 
@@ -98,13 +133,15 @@ const ChatBody = (props) => {
                 });
             });
             await ChatAction.sendMessage(content, setMessageValue, chat.key, currentUser.uid);
+            setShowAddFile(false);
+            setAddButton(ADD_BUTTON);
             anchorChat.scrollIntoView({ behavior: "smooth", block: "end" });
         }
     };
 
     return (
         <div className={styles["chat__container"]} id="chat">
-            {userCompanion.length !== 0 ? (
+            {userCompanion.length !== 0 && (
                 <div className={styles["chat-header"]}>
                     <div className={styles["chat-header__userinfo"]}>
                         <Link to="/chat" className={styles["chat-header__back"]}>
@@ -146,13 +183,11 @@ const ChatBody = (props) => {
                         </div>
                     </div>
                 </div>
-            ) : (
-                ""
             )}
             <div className={styles["chat-body"]} id="chat-body">
                 <div className={styles["chat-body__content"]}>
-                    {chat ? (
-                        chat.messages.length !== 0 ? (
+                    {chat &&
+                        (chat.messages.length !== 0 ? (
                             chat.messages.map((item) => (
                                 <div
                                     key={item.key}
@@ -173,10 +208,7 @@ const ChatBody = (props) => {
                             <h2 className={styles["no-messages"]}>
                                 No messages yet. Send your first message
                             </h2>
-                        )
-                    ) : (
-                        ""
-                    )}
+                        ))}
                     <div id="anchor-scroll" className={styles["anchor-scroll"]}></div>
                 </div>
             </div>
@@ -198,45 +230,19 @@ const ChatBody = (props) => {
                                         ? `${styles["footer-add__menu"]} ${styles["open__add-menu"]}`
                                         : `${styles["footer-add__menu"]} `
                                 }
+                                id={"label-body"}
                             >
-                                <label htmlFor="video-file">
-                                    <div className={styles["add-menu-video"]}>
-                                        <SvgGenerator id="video-add" />
-                                        <input
-                                            type="file"
-                                            name="video"
-                                            id="video-file"
-                                            accept="video/*"
-                                            style={{ display: "none" }}
-                                            onChange={saveAddFile}
-                                        />
-                                    </div>
-                                </label>
-                                <label htmlFor="photo-file">
-                                    <div className={styles["add-menu-photo"]}>
-                                        <input
-                                            type="file"
-                                            name="phote"
-                                            id="photo-file"
-                                            accept="image/*"
-                                            style={{ display: "none" }}
-                                            onChange={saveAddFile}
-                                        />
-                                        <SvgGenerator id="photo-add" />
-                                    </div>
-                                </label>
-                                <label htmlFor="docs-file">
-                                    <div className={styles["add-menu-file"]}>
-                                        <input
-                                            type="file"
-                                            name="docs"
-                                            id="docs-file"
-                                            style={{ display: "none" }}
-                                            onChange={saveAddFile}
-                                        />
-                                        <SvgGenerator id="file-add" />
-                                    </div>
-                                </label>
+                                {addButton.map((item) => (
+                                    <AddFileButton
+                                        key={item.id}
+                                        id={item.id}
+                                        iconId={item.iconId}
+                                        name={item.name}
+                                        accept={item.accept}
+                                        styles={item.styles}
+                                        saveAddFile={saveAddFile}
+                                    />
+                                ))}
                             </div>
                         )}
                     </div>
@@ -287,7 +293,11 @@ const ChatBody = (props) => {
                 {addFile.length !== 0 ? (
                     <div className={styles["chat-footer__addFile"]}>
                         {addFile.map((item) => (
-                            <FileItem item={item} key={item.fileName} />
+                            <FileItem
+                                item={item}
+                                key={item.fileName}
+                                deleteAddFile={deleteAddFile}
+                            />
                         ))}
                     </div>
                 ) : (
@@ -298,4 +308,4 @@ const ChatBody = (props) => {
     );
 };
 
-export { ChatBody };
+export default ChatBody;

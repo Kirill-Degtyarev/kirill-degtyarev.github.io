@@ -1,6 +1,6 @@
 import React from "react";
 
-import FilesConstr from "../../../../FilesConstr/FilesConstr";
+import FilesConstr from "../FilesConstr/FilesConstr";
 import SvgGenerator from "../../../../svgGenerator/SvgGenerator";
 import styles from "./LastMessagesContent.module.css";
 
@@ -60,6 +60,19 @@ const LastMessagesContent = ({
                             name={"photo"}
                             lastMessage={lastMessage}
                         />
+                        {senderMessage !== currentUserUid && (
+                            <div className={styles["messages-count"]}>
+                                <span>{lastMessagesLength}</span>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        case "video":
+            return (
+                <div className={styles["chatlist-chat__messages"]}>
+                    <div className={styles.message}>
+                        <FilesConstr type={"image"} name={"video"} lastMessage={lastMessage} />
                         {senderMessage !== currentUserUid && (
                             <div className={styles["messages-count"]}>
                                 <span>{lastMessagesLength}</span>

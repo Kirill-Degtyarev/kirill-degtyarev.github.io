@@ -1,8 +1,10 @@
 import React from "react";
-import AvatarAction from "../../../action/AvatarAction";
-import FileAction from "../../../action/FileAction";
+import AvatarAction from "../../../../action/AvatarAction";
+import FileAction from "../../../../action/FileAction";
 
-import SvgGenerator from "../../../svgGenerator/SvgGenerator";
+import VideoComponent from "./VideoComponent/VideoComponent";
+
+import SvgGenerator from "../../../../svgGenerator/SvgGenerator";
 import styles from "./MessagesConstr.module.css";
 
 const MessagesConstr = ({ userCompanion, item, id }) => {
@@ -105,17 +107,19 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
                                         />
                                     </div>
                                 ) : (
-                                    item.content.map((items) => (
-                                        <div
-                                            className={styles["message-body__img"]}
-                                            key={items.value.fileName}
-                                        >
-                                            <img
-                                                src={items.value.fileUrl}
-                                                alt={items.value.fileName}
-                                            />
-                                        </div>
-                                    ))
+                                    <div className={styles["message-body__many"]}>
+                                        {item.content.map((items) => (
+                                            <div
+                                                className={styles["message-body__img"]}
+                                                key={items.value.fileName}
+                                            >
+                                                <img
+                                                    src={items.value.fileUrl}
+                                                    alt={items.value.fileName}
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
                                 )}
                             </div>
                             <div className={styles["message-time"]}>{getTime(item.sendTime)}</div>
@@ -293,6 +297,75 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
                                         ))}
                                     </div>
                                 </div>
+                            )}
+                            <div className={styles["message-time"]}>{getTime(item.sendTime)}</div>
+                        </div>
+                    )}
+                </>
+            );
+        case "video":
+            return (
+                <>
+                    {!id ? (
+                        <div className={styles.message}>
+                            <div className={styles["message-content"]}>
+                                {userCompanion.userAvatar ? (
+                                    <div className={styles["message-avatar"]}>
+                                        <img src={userCompanion.userAvatar} alt="avatar" />
+                                    </div>
+                                ) : (
+                                    <div className={styles["message-avatar__text"]}>
+                                        {AvatarAction.getAvatarByUserName(
+                                            userCompanion.userDisplayName
+                                        )}
+                                    </div>
+                                )}
+                                {item.content.length === 1 ? (
+                                    <div className={styles["message-body__video"]}>
+                                        <VideoComponent
+                                            src={item.content[0].value.fileUrl}
+                                            id={item.content[0].value.fileUrl}
+                                        />
+                                    </div>
+                                ) : (
+                                    <div className={styles["message-body__many"]}>
+                                        {item.content.map((items) => (
+                                            <div
+                                                className={styles["message-body__video"]}
+                                                key={items.value.fileName}
+                                            >
+                                                <VideoComponent
+                                                    src={items.value.fileUrl}
+                                                    id={items.value.fileUrl}
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                            <div className={styles["message-time"]}>{getTime(item.sendTime)}</div>
+                        </div>
+                    ) : (
+                        <div className={styles["message-cu"]}>
+                            {item.content.length === 1 ? (
+                                <div className={styles["message-body__video"]}>
+                                    <VideoComponent
+                                        src={item.content[0].value.fileUrl}
+                                        id={item.content[0].value.fileUrl}
+                                    />
+                                </div>
+                            ) : (
+                                item.content.map((items) => (
+                                    <div
+                                        className={styles["message-body__video"]}
+                                        key={items.value.fileName}
+                                    >
+                                        <VideoComponent
+                                            src={items.value.fileUrl}
+                                            id={items.value.fileUrl}
+                                        />
+                                    </div>
+                                ))
                             )}
                             <div className={styles["message-time"]}>{getTime(item.sendTime)}</div>
                         </div>

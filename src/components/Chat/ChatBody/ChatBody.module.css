@@ -193,47 +193,6 @@
     position: relative;
 }
 
-.add-menu-video {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42.25px;
-    height: 42.25px;
-    border-radius: 50%;
-    cursor: pointer;
-    background-color: #2a8bf2;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.03), 0px 7px 25px rgba(42, 139, 242, 0.03),
-        0px 5px 25px rgba(42, 139, 242, 0.07);
-    margin-bottom: 10px;
-}
-
-.add-menu-photo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42.25px;
-    height: 42.25px;
-    border-radius: 50%;
-    cursor: pointer;
-    background-color: #2a8bf2;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.03), 0px 7px 25px rgba(42, 139, 242, 0.03),
-        0px 5px 25px rgba(42, 139, 242, 0.07);
-    margin-bottom: 10px;
-}
-
-.add-menu-file {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42.25px;
-    height: 42.25px;
-    border-radius: 50%;
-    cursor: pointer;
-    background-color: #2a8bf2;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.03), 0px 7px 25px rgba(42, 139, 242, 0.03),
-        0px 5px 25px rgba(42, 139, 242, 0.07);
-}
-
 .footer-add__plus {
     display: flex;
     align-items: center;
@@ -247,19 +206,25 @@
 
 .footer-add__menu {
     position: absolute;
-    top: -163px;
+    bottom: 44px;
     left: 0;
     display: none;
     flex-direction: column;
     align-items: center;
     margin-bottom: 15px;
 }
+
+.footer-add__menu label:not(:last-child) {
+    margin-bottom: 10px;
+}
+
 .open__add-menu {
     opacity: 1;
     display: flex;
     transform: translateY(0);
     animation: openAddMenu 0.2s 1;
 }
+
 .chat-footer__addFile {
     margin-top: 10px;
     padding: 5px;

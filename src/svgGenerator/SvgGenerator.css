@@ -535,3 +535,32 @@
     height: 24px;
     display: inline-block;
 }
+
+.delete {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+}
+
+.delete-mini {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+.video-file {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+.pause {
+    width: 12px;
+    height: 24px;
+    display: inline-block;
+}
+
+.play {
+    width: 24px;
+    height: 25px;
+    display: inline-block;
+}
