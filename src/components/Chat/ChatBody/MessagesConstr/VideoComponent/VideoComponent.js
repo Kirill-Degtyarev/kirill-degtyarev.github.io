@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SvgGenerator from "../../../../../../svgGenerator/SvgGenerator";
+import SvgGenerator from "../../../../../svgGenerator/SvgGenerator";
 
 import styles from "./VideoComponent.module.css";
 const VideoComponent = ({ id, src }) => {
