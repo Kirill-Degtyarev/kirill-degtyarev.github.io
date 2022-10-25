@@ -7,9 +7,9 @@ import { useAuth } from "../../../Hooks/AuthHooks";
 import SvgGenerator from "../../../svgGenerator/SvgGenerator";
 import LastMessagesContent from "./LastMessagesContent/LastMessagesContent";
 
-import styles from "./ChatlistChat.module.css";
+import styles from "./ChatListItem.module.css";
 
-const ChatlistChat = ({ chatsInfo }) => {
+const ChatListItem = ({ chatsInfo }) => {
     const [userCompanion, setUserCompanion] = useState();
     const currentUser = useAuth();
 
@@ -112,4 +112,4 @@ const ChatlistChat = ({ chatsInfo }) => {
     );
 };
 
-export default ChatlistChat;
+export default ChatListItem;

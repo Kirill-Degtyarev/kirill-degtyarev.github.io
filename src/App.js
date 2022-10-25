@@ -3,7 +3,6 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 
 import AuthAction from "./action/AuthAction";
 import { useAuth } from "./Hooks/AuthHooks";
-
 import AppBody from "./components/AppBody/AppBody";
 import Home from "./components/Home/Home";
 import Chat from "./components/Chat/Chat";

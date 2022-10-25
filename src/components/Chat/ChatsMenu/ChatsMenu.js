@@ -3,8 +3,9 @@ import { useAuth } from "../../../Hooks/AuthHooks";
 // import UserAction from "../../../action/UserAction";
 
 import SvgGenerator from "../../../svgGenerator/SvgGenerator";
-import ChatlistChat from "../Chatlist/ChatlistChat";
+import ChatListItem from "../ChatListItem/ChatListItem";
 import ChatAction from "../../../action/ChatAction";
+
 import Loader from "../../Loader/Loader";
 
 import styles from "./ChatsMenu.module.css";
@@ -78,7 +79,7 @@ const ChatsMenu = (props) => {
                     {chats ? (
                         chats.length !== 0 ? (
                             chats.map((item) => (
-                                <ChatlistChat
+                                <ChatListItem
                                     key={item.key}
                                     chatsInfo={item}
                                     setChatId={props.setChatId}
