@@ -2,7 +2,7 @@ import { updateProfile } from "firebase/auth";
 import { doc, getDocs, query, where, collection, updateDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
-import { db } from "../config/configFirebase";
+import { db } from "config/configFirebase";
 
 export default class AvatarAction {
     static getAvatarByUserName(userName) {

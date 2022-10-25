@@ -1,14 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { useAuth } from "../../Hooks/AuthHooks";
+import { useAuth } from "Hooks/AuthHooks";
 
-import Menu from "../Menu/Menu";
-import Loader from "../Loader/Loader";
+import Menu from "components/Menu/Menu";
+import Loader from "components/Loader/Loader";
 
 import styles from "./AppBody.module.css";
 
 const AppBody = (props) => {
     const currentUser = useAuth();
+
     return (
         <div className={currentUser ? styles["page-app"] : styles["container-loader"]}>
             {currentUser ? (

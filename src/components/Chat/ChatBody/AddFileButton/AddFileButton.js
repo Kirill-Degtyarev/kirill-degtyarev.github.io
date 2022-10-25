@@ -1,5 +1,5 @@
 import React from "react";
-import SvgGenerator from "../../../../svgGenerator/SvgGenerator";
+import SvgGenerator from "svgGenerator/SvgGenerator";
 
 import styles from "./AddFileButton.module.css";
 const AddFileButton = (props) => {

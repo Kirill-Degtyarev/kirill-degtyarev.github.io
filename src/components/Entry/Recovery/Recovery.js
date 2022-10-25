@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AuthAction from "../../../action/AuthAction";
+import AuthAction from "action/AuthAction";
 
-import SvgGenerator from "../../../svgGenerator/SvgGenerator";
+import SvgGenerator from "svgGenerator/SvgGenerator";
 
 import styles from "./Recovery.module.css";
 const Recovery = (props) => {

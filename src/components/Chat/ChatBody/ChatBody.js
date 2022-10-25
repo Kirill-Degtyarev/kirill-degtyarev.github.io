@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../../Hooks/AuthHooks";
+import { useAuth } from "Hooks/AuthHooks";
 
-import AvatarAction from "../../../action/AvatarAction";
-import ChatAction from "../../../action/ChatAction";
-import UserAction from "../../../action/UserAction";
-import LastOnlineAction from "../../../action/LastOnlineAction";
-import FileAction from "../../../action/FileAction";
+import AvatarAction from "action/AvatarAction";
+import ChatAction from "action/ChatAction";
+import UserAction from "action/UserAction";
+import LastOnlineAction from "action/LastOnlineAction";
+import FileAction from "action/FileAction";
 
 import Picker from "emoji-picker-react";
 
 import AddFileButton from "./AddFileButton/AddFileButton";
-import SvgGenerator from "../../../svgGenerator/SvgGenerator";
+import SvgGenerator from "svgGenerator/SvgGenerator";
+
 import MessagesConstr from "./MessagesConstr/MessagesConstr";
 import FileItem from "./FileItem/FileItem";
 import styles from "./ChatBody.module.css";
@@ -290,7 +291,7 @@ const ChatBody = (props) => {
                         </div>
                     </div>
                 </div>
-                {addFile.length !== 0 ? (
+                {addFile.length !== 0 && (
                     <div className={styles["chat-footer__addFile"]}>
                         {addFile.map((item) => (
                             <FileItem
@@ -300,8 +301,6 @@ const ChatBody = (props) => {
                             />
                         ))}
                     </div>
-                ) : (
-                    ""
                 )}
             </div>
         </div>

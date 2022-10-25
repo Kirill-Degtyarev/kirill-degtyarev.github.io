@@ -10,7 +10,7 @@ import {
 } from "firebase/auth";
 
 import { doc, getDocs, where, query, collection, updateDoc } from "firebase/firestore";
-import { auth, db } from "../config/configFirebase";
+import { auth, db } from "config/configFirebase";
 import UserAction from "./UserAction";
 
 export default class AuthAction {

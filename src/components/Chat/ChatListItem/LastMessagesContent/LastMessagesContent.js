@@ -1,7 +1,7 @@
 import React from "react";
 
 import FilesConstr from "../FilesConstr/FilesConstr";
-import SvgGenerator from "../../../../svgGenerator/SvgGenerator";
+import SvgGenerator from "svgGenerator/SvgGenerator";
 import styles from "./LastMessagesContent.module.css";
 
 const LastMessagesContent = ({

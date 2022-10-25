@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useAuth } from "../../Hooks/AuthHooks";
+import { useAuth } from "Hooks/AuthHooks";
+import AvatarAction from "action/AvatarAction";
 
 import styles from "./menu.module.css";
 
-import SvgGenerator from "../../svgGenerator/SvgGenerator";
+import SvgGenerator from "svgGenerator/SvgGenerator";
 import MenuItem from "./MenuItem";
-import AvatarAction from "../../action/AvatarAction";
 
 const MENU_ITEM = [
     {
