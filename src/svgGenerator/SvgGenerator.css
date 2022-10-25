@@ -564,3 +564,14 @@
     height: 25px;
     display: inline-block;
 }
+
+.sound-on {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+}
+.sound-muted {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+}

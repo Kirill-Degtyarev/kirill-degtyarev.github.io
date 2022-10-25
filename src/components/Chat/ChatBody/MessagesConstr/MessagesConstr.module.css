@@ -204,23 +204,6 @@
     color: #2a8bf2;
 }
 
-.message-body__video {
-    max-width: 250px;
-    cursor: pointer;
-    border-radius: 8px;
-    position: relative;
-}
-
-.message-body__video:not(:last-child) {
-    margin-bottom: 8px;
-}
-
-.message-body__video video {
-    border-radius: 8px;
-    max-width: 100%;
-    max-height: 100%;
-}
-
 @media (max-width: 475px) {
     .message-body {
         max-width: 340px;

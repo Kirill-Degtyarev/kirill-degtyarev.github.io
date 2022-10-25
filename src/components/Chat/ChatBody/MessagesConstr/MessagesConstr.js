@@ -321,24 +321,18 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
                                     </div>
                                 )}
                                 {item.content.length === 1 ? (
-                                    <div className={styles["message-body__video"]}>
-                                        <VideoComponent
-                                            src={item.content[0].value.fileUrl}
-                                            id={item.content[0].value.fileUrl}
-                                        />
-                                    </div>
+                                    <VideoComponent
+                                        src={item.content[0].value.fileUrl}
+                                        id={item.content[0].value.fileUrl}
+                                    />
                                 ) : (
                                     <div className={styles["message-body__many"]}>
                                         {item.content.map((items) => (
-                                            <div
-                                                className={styles["message-body__video"]}
+                                            <VideoComponent
+                                                src={items.value.fileUrl}
+                                                id={items.value.fileUrl}
                                                 key={items.value.fileName}
-                                            >
-                                                <VideoComponent
-                                                    src={items.value.fileUrl}
-                                                    id={items.value.fileUrl}
-                                                />
-                                            </div>
+                                            />
                                         ))}
                                     </div>
                                 )}
@@ -348,23 +342,17 @@ const MessagesConstr = ({ userCompanion, item, id }) => {
                     ) : (
                         <div className={styles["message-cu"]}>
                             {item.content.length === 1 ? (
-                                <div className={styles["message-body__video"]}>
-                                    <VideoComponent
-                                        src={item.content[0].value.fileUrl}
-                                        id={item.content[0].value.fileUrl}
-                                    />
-                                </div>
+                                <VideoComponent
+                                    src={item.content[0].value.fileUrl}
+                                    id={item.content[0].value.fileUrl}
+                                />
                             ) : (
                                 item.content.map((items) => (
-                                    <div
-                                        className={styles["message-body__video"]}
+                                    <VideoComponent
+                                        src={items.value.fileUrl}
+                                        id={items.value.fileUrl}
                                         key={items.value.fileName}
-                                    >
-                                        <VideoComponent
-                                            src={items.value.fileUrl}
-                                            id={items.value.fileUrl}
-                                        />
-                                    </div>
+                                    />
                                 ))
                             )}
                             <div className={styles["message-time"]}>{getTime(item.sendTime)}</div>
