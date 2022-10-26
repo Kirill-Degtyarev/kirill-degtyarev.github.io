@@ -1,5 +1,5 @@
 import { collection, addDoc, onSnapshot, query, where } from "firebase/firestore";
-import { db } from "config/configFirebase";
+import { db } from "../config/configFirebase";
 
 export default class UserAction {
     static async addUserDb(email, displayName, uid, photoUrl) {

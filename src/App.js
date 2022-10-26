@@ -12,7 +12,6 @@ import Calendar from "./components/Calendar/Calendar";
 import Settings from "./components/Settings/Settings";
 import Login from "./components/Entry/Login/Login";
 import Registration from "./components/Entry/Registartion/Registration";
-// import ImgItem from "components/Chat/ChatBody/ImgItem/ImgItem";
 import Recovery from "./components/Entry/Recovery/Recovery";
 import NotFound from "./components/NotFound/NotFound";
 
@@ -21,7 +20,6 @@ import "./fonts/fonts.css";
 
 function App() {
     const [userIsLoged, setUserLogeed] = useState(false);
-    // const [cartIsVisisble, setCartIsVisible] = useState(true);
 
     const navigate = useNavigate();
     const currentUser = useAuth();
@@ -55,17 +53,8 @@ function App() {
         navigate("/login");
     };
 
-    // const showCartHandler = () => {
-    //     setCartIsVisible(true);
-    // };
-
-    // const hideCartHandler = () => {
-    //     setCartIsVisible(false);
-    // };
-
     return (
         <div className={userIsLoged ? styles.notice__container : styles.entry__container}>
-            {/* {cartIsVisisble && <ImgItem hideCartHandler={hideCartHandler} />} */}
             <Routes>
                 {userIsLoged ? (
                     <Route path="/" element={<AppBody logoutHandler={logoutHandler} />}>

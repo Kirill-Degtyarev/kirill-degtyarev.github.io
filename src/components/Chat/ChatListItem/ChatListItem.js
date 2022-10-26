@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "Hooks/AuthHooks";
+import { useAuth } from "../../../Hooks/AuthHooks";
 import { NavLink } from "react-router-dom";
 
-import UserAction from "action/UserAction";
-import AvatarAction from "action/AvatarAction";
+import UserAction from "../../../action/UserAction";
+import AvatarAction from "../../../action/AvatarAction";
 
-import SvgGenerator from "svgGenerator/SvgGenerator";
+import SvgGenerator from "../../../svgGenerator/SvgGenerator";
 import LastMessagesContent from "./LastMessagesContent/LastMessagesContent";
 
 import styles from "./ChatListItem.module.css";

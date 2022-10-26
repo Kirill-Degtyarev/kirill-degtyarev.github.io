@@ -1,9 +1,9 @@
 import React from "react";
 
-import AvatarAction from "action/AvatarAction";
-import ChatAction from "action/ChatAction";
+import AvatarAction from "../../../action/AvatarAction";
+import ChatAction from "../../../action/ChatAction";
 
-import CreateChat from "assest/img/Contact/create-chat.png";
+import CreateChat from "../../../assest/img/Contact/create-chat.png";
 
 import styles from "./UserContact.module.css";
 

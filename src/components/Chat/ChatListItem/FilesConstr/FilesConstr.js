@@ -1,6 +1,6 @@
 import React from "react";
 
-import SvgGenerator from "svgGenerator/SvgGenerator";
+import SvgGenerator from "../../../../svgGenerator/SvgGenerator";
 
 import styles from "./FilesConstr.module.css";
 

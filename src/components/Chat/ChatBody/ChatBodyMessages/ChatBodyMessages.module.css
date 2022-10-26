@@ -1,0 +1,33 @@
+.chat-body {
+    display: flex;
+    flex-direction: column-reverse;
+    flex: 1 1 auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.chat-body__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.message-currentUser {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message-senderUser {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.no-messages {
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #707c97;
+    user-select: none;
+}

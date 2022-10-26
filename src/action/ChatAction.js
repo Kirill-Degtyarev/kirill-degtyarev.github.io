@@ -9,7 +9,7 @@ import {
     getDoc,
     arrayUnion,
 } from "firebase/firestore";
-import { db } from "config/configFirebase";
+import { db } from "../config/configFirebase";
 
 export default class ChatAction {
     static async createChat(user1, user2) {
@@ -85,11 +85,6 @@ export default class ChatAction {
             });
         };
     }
-
-    // static async getChatLinks(currentUserUID) {
-    //     const chatLinks = [];
-    //     console.log(currentUserUID);
-    // }
 
     static async sendMessage(content, setMessageValue, chatID, senderMessageUid) {
         const date = new Date().toISOString();

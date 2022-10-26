@@ -1,0 +1,142 @@
+.chat-footer {
+    border-top: 2px solid rgba(112, 124, 151, 0.1);
+    padding: 14px 20px;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.chat-footer__body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-add {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.footer-add__plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42.25px;
+    height: 42.25px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: linear-gradient(325.78deg, #2a8bf2 14.76%, #7cb8f7 87.3%);
+}
+
+.footer-add__menu {
+    position: absolute;
+    bottom: 44px;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.footer-add__menu label:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.open__add-menu {
+    opacity: 1;
+    display: flex;
+    transform: translateY(0);
+    animation: openAddMenu 0.2s 1;
+}
+
+.chat-footer__addFile {
+    margin-top: 10px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+@keyframes openAddMenu {
+    0% {
+        transform: translateY(60px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.footer-plus {
+    width: 16.9px !important;
+    height: 16.93px !important;
+}
+
+.footer-input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: auto 20px;
+    color: rgba(112, 124, 151, 0.5);
+}
+
+.message-input {
+    max-height: 200px;
+    min-height: 30px;
+    width: 100%;
+    font-size: 20px !important;
+    line-height: 120%;
+    color: rgb(96, 106, 129) !important;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.footer-input div:empty::before {
+    content: attr(data-placeholder);
+}
+
+.footer-attach {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.footer-attach__smile {
+    display: flex;
+    margin-right: 33px;
+}
+
+.send-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42.25px;
+    height: 42.25px;
+    background: linear-gradient(325.78deg, #2a8bf2 14.76%, #7cb8f7 87.3%);
+    box-shadow: 4px 4px 25px rgba(42, 139, 242, 0.15), 2px 2px 25px rgba(42, 139, 242, 0.05),
+        4px 6px 10px rgba(42, 139, 242, 0.15);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.footer-attach__picker {
+    position: absolute;
+    top: -358px;
+    left: -170px;
+}
+
+@media (max-width: 991px) {
+    .chat-footer {
+        padding: 7px 10px;
+    }
+    .footer-attach__smile {
+        margin-right: 15px;
+    }
+}

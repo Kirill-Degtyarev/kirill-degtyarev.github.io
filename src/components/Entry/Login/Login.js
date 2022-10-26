@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
-import AuthAction from "action/AuthAction";
+import AuthAction from "../../../action/AuthAction";
 
 import styles from "./Login.module.css";
 

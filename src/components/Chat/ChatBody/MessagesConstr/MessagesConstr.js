@@ -1,10 +1,10 @@
 import React from "react";
-import AvatarAction from "action/AvatarAction";
-import FileAction from "action/FileAction";
+import AvatarAction from "../../../../action/AvatarAction";
+import FileAction from "../../../../action/FileAction";
 
 import VideoComponent from "./VideoComponent/VideoComponent";
 
-import SvgGenerator from "svgGenerator/SvgGenerator";
+import SvgGenerator from "../../../../svgGenerator/SvgGenerator";
 
 import styles from "./MessagesConstr.module.css";
 

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useAuth } from "Hooks/AuthHooks";
-import ChatAction from "action/ChatAction";
+import { useAuth } from "../../../Hooks/AuthHooks";
+import ChatAction from "../../../action/ChatAction";
 
-import SvgGenerator from "svgGenerator/SvgGenerator";
+import SvgGenerator from "../../../svgGenerator/SvgGenerator";
 import ChatListItem from "../ChatListItem/ChatListItem";
-import Loader from "components/Loader/Loader";
+import Loader from "../../Loader/Loader";
 
 import styles from "./ChatsMenu.module.css";
 

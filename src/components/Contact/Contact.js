@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import UserAction from "action/UserAction";
-import { useAuth } from "Hooks/AuthHooks";
+import UserAction from "../../action/UserAction";
+import { useAuth } from "../../Hooks/AuthHooks";
 
 import UserContact from "./UserContact/UserContact";
 import Loader from "../Loader/Loader";

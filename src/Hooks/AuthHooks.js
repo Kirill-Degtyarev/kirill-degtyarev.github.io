@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { auth } from "config/configFirebase";
+import { auth } from "../config/configFirebase";
 import { onAuthStateChanged } from "firebase/auth";
 
 export function useAuth() {
