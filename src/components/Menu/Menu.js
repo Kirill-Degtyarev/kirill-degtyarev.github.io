@@ -11,7 +11,7 @@ const MENU_ITEM = [
     {
         id: "item_1",
         title: "home",
-        path: "/home",
+        path: "/",
         img_id: "home",
         img_class: "img-home",
     },

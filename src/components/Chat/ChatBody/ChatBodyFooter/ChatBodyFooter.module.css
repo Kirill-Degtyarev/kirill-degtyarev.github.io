@@ -140,3 +140,8 @@
         margin-right: 15px;
     }
 }
+@media (max-width: 768px) {
+    .send-message {
+        box-shadow: none;
+    }
+}

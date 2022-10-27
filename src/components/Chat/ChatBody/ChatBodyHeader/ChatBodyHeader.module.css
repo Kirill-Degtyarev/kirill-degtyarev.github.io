@@ -154,4 +154,12 @@
     .chat-header__back {
         display: flex;
     }
+    .addition-menu {
+        box-shadow: none;
+        border: 1px solid rgb(128, 128, 128);
+    }
+    .addition-attachments {
+        box-shadow: none;
+        border: 1px solid rgb(128, 128, 128);
+    }
 }

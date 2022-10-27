@@ -58,13 +58,13 @@ function App() {
             <Routes>
                 {userIsLoged ? (
                     <Route path="/" element={<AppBody logoutHandler={logoutHandler} />}>
-                        <Route index path="/home" element={<Home />} />
-                        <Route path="/chat/*" element={<Chat />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/notifications" element={<Notifications />} />
-                        <Route path="/calendar" element={<Calendar />} />
-                        <Route path="/settings" element={<Settings />} />
-                        <Route path="/*" element={<NotFound />} />
+                        <Route index element={<Home />} />
+                        <Route path="chat/*" element={<Chat />} />
+                        <Route path="contact" element={<Contact />} />
+                        <Route path="notifications" element={<Notifications />} />
+                        <Route path="calendar" element={<Calendar />} />
+                        <Route path="settings" element={<Settings />} />
+                        <Route path="*" element={<NotFound />} />
                     </Route>
                 ) : (
                     <>

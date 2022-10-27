@@ -107,6 +107,18 @@
     padding: 6px;
     width: fit-content;
     max-width: 400px;
+    /* transform: translateX(0) translateY(0); */
+    /* animation: showMessages 0.3s 1; */
+}
+
+@keyframes showMessages {
+    0% {
+        transform: translateX(-160%) translateY(180%);
+    }
+
+    100% {
+        transform: translateX(0) translateY(0);
+    }
 }
 
 .contetn-cu__text {
