@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 
 import UserAction from "../../../action/UserAction";
 import AvatarAction from "../../../action/AvatarAction";
+import LastOnlineAction from "../../../action/LastOnlineAction";
 
-import SvgGenerator from "../../../svgGenerator/SvgGenerator";
 import LastMessagesContent from "./LastMessagesContent/LastMessagesContent";
 
 import styles from "./ChatListItem.module.css";
@@ -73,13 +73,11 @@ const ChatListItem = ({ chatsInfo }) => {
                                     <span
                                         className={`${styles["chat-info__actions"]} ${styles.action}`}
                                     >
-                                        {userCompanion[0].action ? (
-                                            <div className={styles["action-img"]}>
-                                                <SvgGenerator id={userCompanion[0].action} />
-                                            </div>
-                                        ) : (
-                                            ""
-                                        )}
+                                        {userCompanion[0].online
+                                            ? "online"
+                                            : LastOnlineAction.getLastOnline(
+                                                  userCompanion[0].lastOnline
+                                              )}
                                         {/* <div className={styles["action-title"]}>
                                             {userCompanion[0].action === "writes"
                                                 ? "writes"

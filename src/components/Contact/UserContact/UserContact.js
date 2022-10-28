@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import AvatarAction from "../../../action/AvatarAction";
 import ChatAction from "../../../action/ChatAction";
@@ -8,6 +9,10 @@ import CreateChat from "../../../assest/img/Contact/create-chat.png";
 import styles from "./UserContact.module.css";
 
 const UserContact = ({ currentUser, users }) => {
+    const nav = useNavigate();
+    const navigateLink = (link) => {
+        nav(encodeURI(`/chat/${link}`));
+    };
     return users.map((item) => {
         return currentUser.uid !== item.userId ? (
             <div
@@ -17,10 +22,8 @@ const UserContact = ({ currentUser, users }) => {
                 <div className={`${styles["user-item__body"]} ${styles["item-body"]}`}>
                     <div className={`${styles["item-body__info"]} ${styles["item-info"]}`}>
                         <div className={styles.user__avatar}>
-                            {item.online ? (
+                            {item.online && (
                                 <span className={`${styles["user-avatar__online"]} `}></span>
-                            ) : (
-                                ""
                             )}
                             {item.userAvatar !== null ? (
                                 <img
@@ -51,7 +54,7 @@ const UserContact = ({ currentUser, users }) => {
                         <div
                             className={styles["item-btn__button"]}
                             onClick={() => {
-                                ChatAction.createChat(currentUser, item);
+                                ChatAction.createChat(currentUser, item, navigateLink);
                             }}
                         >
                             <img src={CreateChat} alt="create-chat" />

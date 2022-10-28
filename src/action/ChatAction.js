@@ -12,7 +12,7 @@ import {
 import { db } from "../config/configFirebase";
 
 export default class ChatAction {
-    static async createChat(user1, user2) {
+    static async createChat(user1, user2, navigateLink) {
         try {
             const chatsData = await getDocs(collection(db, "chat"));
             const chats = [];
@@ -46,9 +46,9 @@ export default class ChatAction {
                         messages: [],
                     });
                 })();
-                alert("chat created");
+                navigateLink(user2.userDisplayName);
             } else {
-                alert("this chat already exists");
+                navigateLink(user2.userDisplayName);
             }
         } catch (error) {
             console.log(error);
