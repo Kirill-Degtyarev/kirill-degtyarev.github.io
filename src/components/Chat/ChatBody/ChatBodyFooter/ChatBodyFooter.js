@@ -33,12 +33,14 @@ const ADD_BUTTON = [
 ];
 
 function ChatBodyFooter({ currentUser, chatKey }) {
-    // const [chosenEmoji, setChosenEmoji] = useState(null);
+    // eslint-disable-next-line
+    const [chosenEmoji, setChosenEmoji] = useState(null);
     const [showAddFile, setShowAddFile] = useState(false);
     const [messageValue, setMessageValue] = useState("");
     const [showEmoji, setShowEmoji] = useState(false);
     const [addButton, setAddButton] = useState(ADD_BUTTON);
     const [addFile, setAddFile] = useState([]);
+    const messageInput = document.getElementById("message-input");
 
     useEffect(() => {
         const messageInput = document.getElementById("message-input");
@@ -69,7 +71,6 @@ function ChatBodyFooter({ currentUser, chatKey }) {
     const sendMessage = async () => {
         let content = [];
         const anchorChat = document.getElementById("anchor-scroll");
-        const messageInput = document.getElementById("message-input");
         if (addFile.length === 0) {
             if (messageValue !== "") {
                 content = [
@@ -101,15 +102,10 @@ function ChatBodyFooter({ currentUser, chatKey }) {
         }
     };
 
-    // const onEmojiClick = (event, emojiObject) => {
-    //     const messageInput = document.getElementById("message-input");
-    //     setChosenEmoji(chosenEmoji);
-    //     messageInput.innerText =
-    //         messageValue.substr(0, messageInput.selectionStart) +
-    //         emojiObject.emoji +
-    //         messageValue.substr(messageInput.selectionEnd);
-    //     setMessageValue(messageInput.innerHTML);
-    // };
+    const onEmojiClick = (event, emojiObject) => {
+        setChosenEmoji(emojiObject);
+        messageInput.textContent = messageInput.textContent + emojiObject.emoji;
+    };
 
     return (
         <div className={styles["chat-footer"]}>
@@ -173,8 +169,7 @@ function ChatBodyFooter({ currentUser, chatKey }) {
                 <div className={styles["footer-attach"]}>
                     {showEmoji && (
                         <div className={styles["footer-attach__picker"]}>
-                            {/* <Picker onEmojiClick={onEmojiClick} /> */}
-                            <Picker />
+                            <Picker onEmojiClick={onEmojiClick} />
                         </div>
                     )}
                     <div

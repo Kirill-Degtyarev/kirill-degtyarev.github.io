@@ -119,7 +119,7 @@ const Menu = (props) => {
                         <span className={styles["menu-burger__line"]}></span>
                     </div>
                     <div className={`${styles["menu-body__profile"]} ${styles.profile}`}>
-                        {currentUser ? (
+                        {currentUser && (
                             <>
                                 <div className={styles["profile-avatar"]}>
                                     {newAvatarUrl ? (
@@ -154,7 +154,7 @@ const Menu = (props) => {
                                             />
                                         </div>
                                     </div>
-                                    {changeAvatar ? (
+                                    {changeAvatar && (
                                         <div
                                             className={`${styles["profile-info__action"]} ${styles.action}`}
                                         >
@@ -171,7 +171,7 @@ const Menu = (props) => {
                                                 </label>
                                             </div>
 
-                                            {newAvatar ? (
+                                            {newAvatar && (
                                                 <div className={styles["action-btn"]}>
                                                     <input
                                                         type="button"
@@ -186,17 +186,11 @@ const Menu = (props) => {
                                                         className={styles["action-btn__cancel"]}
                                                     />
                                                 </div>
-                                            ) : (
-                                                ""
                                             )}
                                         </div>
-                                    ) : (
-                                        ""
                                     )}
                                 </div>
                             </>
-                        ) : (
-                            ""
                         )}
                     </div>
                     <ul className={styles["menu-body__list"]}>{menuList}</ul>
