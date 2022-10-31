@@ -21,8 +21,8 @@ After you complete the Login, you will have access to such functionality as:\
 • On the Chat page, you can start chatting with your friends. In the chat itself, you can send simple messages using Emoji(beta), attach files, videos, photos.\
 • Other pages are under development!!!\
 The functionality of this application will be expanded in the future.\
-If you do not want to deploy applications locally, then you can follow the link - [https://kirill-degtyarev.github.io/#/login](https://kirill-degtyarev.github.io/#/login)\
-I will be glad to accept any feedback in my Telegram @Rat_46.\
+If you do not want to deploy applications locally, then you can follow the link - [https://kirill-degtyarev.github.io/#/login](kirill-degtyarev.github.io)\
+I will be glad to accept any feedback in my Telegram [https://t.me/Rat_46](@Rat_46).
 
 # Getting Started with Notice-App
 
