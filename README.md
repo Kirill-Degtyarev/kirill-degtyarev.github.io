@@ -1,4 +1,4 @@
-# THIS "Notice App"
+# THIS IS "Notice App"
 
 This "Notice App" was developed entirely by me.\
 I spent about 150 hours developing the Notice App, and it is still under development.\
