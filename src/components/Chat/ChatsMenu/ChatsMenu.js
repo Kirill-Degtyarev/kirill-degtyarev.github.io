@@ -35,6 +35,20 @@ const ChatsMenu = (props) => {
         });
     }
 
+    const searchChat = (e) => {
+        const request = e.target.value.toLowerCase().trim();
+        const newChats = chats.filter((i) =>
+            i.key
+                .split("+")[1]
+                .toLowerCase()
+                .includes(request)
+        );
+        setChats(newChats);
+        if (request === "" && currentUser) {
+            ChatAction.getChats(setChats, currentUser.uid);
+        }
+    };
+
     return (
         <div className={styles.chats__container}>
             <div className={styles.chats__wr}>
@@ -63,14 +77,15 @@ const ChatsMenu = (props) => {
                                 name="serach-input"
                                 placeholder="Search"
                                 id="serach-input"
+                                onInput={searchChat}
                             />
                         </div>
-                        <div className={styles["search-body__select"]}>
+                        {/* <div className={styles["search-body__select"]}>
                             <div className={styles["search-select__title"]}>Messages</div>
                             <div className={styles["search-select__icon"]}>
                                 <SvgGenerator id="arrow-down" stroke="#707c97" />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className={!chats ? styles["chatlist-loader"] : styles["chatlist"]}>
