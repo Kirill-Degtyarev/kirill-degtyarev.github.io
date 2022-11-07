@@ -99,12 +99,14 @@ const ChatListItem = ({ chatsInfo }) => {
                             )}
                         </div>
                         {chatsInfo.lastMessages.at(-1).content && (
-                            <LastMessagesContent
-                                lastMessage={chatsInfo.lastMessages.at(-1).content}
-                                lastMessagesLength={chatsInfo.lastMessages.length}
-                                senderMessage={chatsInfo.lastMessages.at(-1).senderMessage}
-                                currentUserUid={currentUser.uid}
-                            />
+                            <div className={styles["chats-info__content"]}>
+                                <LastMessagesContent
+                                    lastMessage={chatsInfo.lastMessages.at(-1).content}
+                                    lastMessagesLength={chatsInfo.lastMessages.length}
+                                    senderMessage={chatsInfo.lastMessages.at(-1).senderMessage}
+                                    currentUserUid={currentUser.uid}
+                                />
+                            </div>
                         )}
                     </div>
                 </NavLink>
