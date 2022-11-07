@@ -39,7 +39,7 @@
     right: 0;
     margin: auto;
     border-radius: 8px;
-    background: linear-gradient(96.78deg, #7cb8f7 0%, #2a8bf2 100%);
+    background-color: #5fabf3;
     opacity: 0;
     transition: opacity 0.5s;
 }

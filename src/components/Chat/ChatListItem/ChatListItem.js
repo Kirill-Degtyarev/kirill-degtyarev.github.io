@@ -34,6 +34,7 @@ const ChatListItem = ({ chatsInfo }) => {
 
         return hours + ":" + minute;
     };
+
     return (
         <>
             {userCompanion && (
@@ -43,6 +44,7 @@ const ChatListItem = ({ chatsInfo }) => {
                             ? `${styles["chatlist-chat"]} ${styles["chatlist-active"]}`
                             : styles["chatlist-chat"]
                     }
+                    id="chatlist-chat"
                     to={encodeURI(`/chat/${userCompanion[0].userDisplayName}`)}
                 >
                     <div className={styles["chatlist-chat__body"]}>

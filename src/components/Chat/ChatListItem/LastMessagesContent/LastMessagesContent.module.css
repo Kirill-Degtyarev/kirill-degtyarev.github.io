@@ -23,6 +23,10 @@
     color: #707c97;
 }
 
+.message__active {
+    color: red;
+}
+
 .chat-messages__voice {
     display: flex;
     align-items: center;

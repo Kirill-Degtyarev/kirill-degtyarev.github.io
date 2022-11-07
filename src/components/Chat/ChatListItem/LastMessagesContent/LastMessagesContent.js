@@ -9,13 +9,20 @@ const LastMessagesContent = ({
     lastMessagesLength,
     senderMessage,
     currentUserUid,
+    linkIsActive,
 }) => {
     switch (lastMessage[0].type) {
         case "text":
             return (
                 <div className={styles["chatlist-chat__messages"]}>
                     <div className={styles.message}>
-                        <div className={styles["chat-messages"]}>
+                        <div
+                            className={
+                                linkIsActive
+                                    ? `${styles["chat-messages"]} ${styles.message__active}`
+                                    : styles["chat-messages"]
+                            }
+                        >
                             {lastMessage[0].type === "text" ? (
                                 lastMessage[0].value
                             ) : (
