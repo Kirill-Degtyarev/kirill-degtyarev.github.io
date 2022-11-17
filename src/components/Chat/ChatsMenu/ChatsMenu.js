@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useAuth } from "../../../Hooks/AuthHooks";
-import ChatAction from "../../../action/ChatAction";
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../../Hooks/AuthHooks';
+import ChatAction from '../../../action/ChatAction';
 
-import SvgGenerator from "../../../svgGenerator/SvgGenerator";
-import ChatListItem from "../ChatListItem/ChatListItem";
-import Loader from "../../Loader/Loader";
+import SvgGenerator from '../../../svgGenerator/SvgGenerator';
+import ChatListItem from '../ChatListItem/ChatListItem';
+import Loader from '../../Loader/Loader';
 
-import styles from "./ChatsMenu.module.css";
+import styles from './ChatsMenu.module.css';
 
 const ChatsMenu = (props) => {
     const [chats, setChats] = useState();
+    const [request, setRequest] = useState('');
     const currentUser = useAuth();
 
     useEffect(() => {
@@ -18,36 +19,32 @@ const ChatsMenu = (props) => {
         }
     }, [currentUser]);
 
-    if (chats) {
-        chats.sort(function(a, b) {
-            return (
-                new Date(
-                    b.lastMessages[
-                        b.lastMessages.length === 1 ? 0 : b.lastMessages.length - 1
-                    ].sendLastTime
-                ) -
-                new Date(
-                    a.lastMessages[
-                        a.lastMessages.length === 1 ? 0 : a.lastMessages.length - 1
-                    ].sendLastTime
-                )
-            );
-        });
-    }
-
-    const searchChat = (e) => {
-        const request = e.target.value.toLowerCase().trim();
-        const newChats = chats.filter((i) =>
-            i.key
-                .split("+")[1]
-                .toLowerCase()
-                .includes(request)
-        );
-        setChats(newChats);
-        if (request === "" && currentUser) {
-            ChatAction.getChats(setChats, currentUser.uid);
-        }
-    };
+    const chatsItems =
+        chats &&
+        chats
+            .sort(function(a, b) {
+                return (
+                    new Date(
+                        b.lastMessages[
+                            b.lastMessages.length === 1 ? 0 : b.lastMessages.length - 1
+                        ].sendLastTime,
+                    ) -
+                    new Date(
+                        a.lastMessages[
+                            a.lastMessages.length === 1 ? 0 : a.lastMessages.length - 1
+                        ].sendLastTime,
+                    )
+                );
+            })
+            .filter((i) =>
+                i.key
+                    .split('+')[1]
+                    .toLowerCase()
+                    .includes(request),
+            )
+            .map((item) => (
+                <ChatListItem key={item.key} chatsInfo={item} setChatId={props.setChatId} />
+            ));
 
     return (
         <div className={styles.chats__container}>
@@ -66,18 +63,21 @@ const ChatsMenu = (props) => {
                         <h2 className={styles["chats-header__button-title"]}>Create New Chat</h2>
                     </div>
                 </div> */}
-                <div className={styles["chats-search"]}>
-                    <div className={styles["chats-search__body"]}>
-                        <div className={styles["search-body__icon"]}>
+                <div className={styles['chats-search']}>
+                    <div className={styles['chats-search__body']}>
+                        <div className={styles['search-body__icon']}>
                             <SvgGenerator id="search" />
                         </div>
-                        <div className={styles["search-body__input"]}>
+                        <div className={styles['search-body__input']}>
                             <input
+                                value={request}
                                 type="text"
                                 name="serach-input"
                                 placeholder="Search"
                                 id="serach-input"
-                                onInput={searchChat}
+                                onChange={(e) => {
+                                    setRequest(e.target.value.toLowerCase().trim());
+                                }}
                             />
                         </div>
                         {/* <div className={styles["search-body__select"]}>
@@ -88,18 +88,12 @@ const ChatsMenu = (props) => {
                         </div> */}
                     </div>
                 </div>
-                <div className={!chats ? styles["chatlist-loader"] : styles["chatlist"]}>
+                <div className={!chats ? styles['chatlist-loader'] : styles['chatlist']}>
                     {chats ? (
                         chats.length !== 0 ? (
-                            chats.map((item) => (
-                                <ChatListItem
-                                    key={item.key}
-                                    chatsInfo={item}
-                                    setChatId={props.setChatId}
-                                />
-                            ))
+                            chatsItems
                         ) : (
-                            <div className={styles["chatlist-none"]}>No chats</div>
+                            <div className={styles['chatlist-none']}>No chats</div>
                         )
                     ) : (
                         <Loader />
