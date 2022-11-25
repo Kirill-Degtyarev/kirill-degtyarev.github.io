@@ -375,6 +375,7 @@ listItemProduct.forEach((product) => {
     const counterProduct = product.querySelector('.amount-counter__count');
     const amountResidueEl = product.querySelector('.item-body__amount-residue');
     const deleteItem = product.querySelector('.amount-actions__delete');
+    const likeItem = product.querySelector('.amount-actions__like');
     let amountResidue = 0;
     let discounts = 0;
     if (amountResidueEl) {
@@ -384,7 +385,14 @@ listItemProduct.forEach((product) => {
         let discount = +item.dataset.sale;
         discounts += discount;
     });
-
+    likeItem.addEventListener('click', (e) => {
+        const selfItem = e.currentTarget;
+        if (selfItem.classList.contains('like-active')) {
+            selfItem.classList.remove('like-active');
+        } else {
+            selfItem.classList.add('like-active');
+        }
+    });
     checkBox.addEventListener('change', (e) => {
         const selfItem = e.currentTarget;
         if (selfItem.checked) {
@@ -532,7 +540,7 @@ checkBoxsProducts.forEach((item) => {
         const priceFiniteEl = itemParent.querySelector('.item-body__price-finite');
         const priceTotal = +priceTotalEl.textContent.split('сом')[0].replace(/\s/g, '');
         const priceFinite = +priceFiniteEl.textContent.split('сом')[0].replace(/\s/g, '');
-        const couterBasketHeader = document.querySelector('.header__basket-count');
+        const couterBasketHeader = document.querySelectorAll('.header__basket-count');
         const priceDiscount = priceTotal - priceFinite;
         const counterBasketTotal = document.getElementById('number-of-product');
         if (e.target.checked) {
@@ -551,10 +559,14 @@ checkBoxsProducts.forEach((item) => {
                     priceDiscount
                 ).toLocaleString() +
                 ' сом';
-            couterBasketHeader.textContent = +couterBasketHeader.textContent + 1;
-            if (+couterBasketHeader.textContent !== 0) {
-                couterBasketHeader.style.display = 'flex';
-            }
+
+            couterBasketHeader.forEach((item) => {
+                item.textContent = +item.textContent + 1;
+                if (+item.textContent !== 0) {
+                    item.style.display = 'flex';
+                }
+            });
+
             counterBasketTotal.textContent =
                 +counterBasketTotal.textContent.split('товара')[0].replace(/\s/g, '') +
                 1 +
@@ -575,10 +587,12 @@ checkBoxsProducts.forEach((item) => {
                     priceDiscount
                 ).toLocaleString() +
                 ' сом';
-            couterBasketHeader.textContent = +couterBasketHeader.textContent - 1;
-            if (+couterBasketHeader.textContent === 0) {
-                couterBasketHeader.style.display = 'none';
-            }
+            couterBasketHeader.forEach((item) => {
+                item.textContent = +item.textContent - 1;
+                if (+item.textContent !== 0) {
+                    item.style.display = 'none';
+                }
+            });
             counterBasketTotal.textContent =
                 +counterBasketTotal.textContent.split('товара')[0].replace(/\s/g, '') -
                 1 +
