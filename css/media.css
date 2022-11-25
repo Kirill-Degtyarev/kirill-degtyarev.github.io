@@ -168,6 +168,9 @@
     .item-body__subwr {
         display: block;
     }
+    .item-body__wr {
+        margin-bottom: 12px;
+    }
     .item-body__amount {
         margin-right: 0;
         display: flex;
