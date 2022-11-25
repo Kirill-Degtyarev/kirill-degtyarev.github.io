@@ -142,7 +142,8 @@ body {
 .title-product {
     font-style: normal;
     font-weight: 600;
-    font-size: 150%;
+    font-size: 16px;
+    line-height: 150%;
     color: #000000;
 }
 
