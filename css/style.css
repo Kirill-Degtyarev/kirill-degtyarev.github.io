@@ -168,8 +168,8 @@ body {
     align-items: flex-start;
     justify-content: space-between;
     gap: 32px;
-    margin-top: 24px;
-    margin-bottom: 50px;
+    padding-top: 24px;
+    padding-bottom: 50px;
 }
 
 .basket-product {
