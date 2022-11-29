@@ -562,7 +562,7 @@ checkBoxsProducts.forEach((item) => {
 
             couterBasketHeader.forEach((item) => {
                 item.textContent = +item.textContent + 1;
-                if (+item.textContent !== 0) {
+                if (+item.textContent === 0) {
                     item.style.display = 'flex';
                 }
             });
@@ -589,7 +589,7 @@ checkBoxsProducts.forEach((item) => {
                 ' сом';
             couterBasketHeader.forEach((item) => {
                 item.textContent = +item.textContent - 1;
-                if (+item.textContent !== 0) {
+                if (+item.textContent === 0) {
                     item.style.display = 'none';
                 }
             });
