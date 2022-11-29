@@ -148,12 +148,14 @@
     }
     .basket-product__title {
         padding-left: 10px;
+        margin-bottom: 16px;
     }
     .basket-product__items {
         padding: 0 10px;
     }
     .product-items__missing {
         padding: 0 10px;
+        margin: 15px 0px;
     }
     .header__search-mobile {
         display: block;
