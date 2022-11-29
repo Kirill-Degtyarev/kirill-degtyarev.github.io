@@ -564,6 +564,8 @@ checkBoxsProducts.forEach((item) => {
                 item.textContent = +item.textContent + 1;
                 if (+item.textContent === 0) {
                     item.style.display = 'flex';
+                } else {
+                    item.style.display = 'flex';
                 }
             });
 
@@ -591,6 +593,8 @@ checkBoxsProducts.forEach((item) => {
                 item.textContent = +item.textContent - 1;
                 if (+item.textContent === 0) {
                     item.style.display = 'none';
+                } else {
+                    item.style.display = 'flex';
                 }
             });
             counterBasketTotal.textContent =
