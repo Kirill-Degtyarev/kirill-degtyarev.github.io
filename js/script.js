@@ -487,8 +487,25 @@ listItemProduct.forEach((product) => {
 
 missingList.forEach((product) => {
     const deleteItem = product.querySelector('.amount-actions__delete');
+    const likeItem = product.querySelector('.amount-actions__like');
+
     deleteItem.addEventListener('click', (e) => {
         product.remove();
+        const countProduct = document.querySelector('.items-missing__header-subtitle');
+        const currentMissingList = document.querySelectorAll('.items-missing__list-item');
+        let count = 0;
+        currentMissingList.forEach((item) => {
+            count += 1;
+        });
+        countProduct.textContent = `Отсутствуют · ${count} товара`;
+    });
+    likeItem.addEventListener('click', (e) => {
+        const selfItem = e.currentTarget;
+        if (selfItem.classList.contains('like-active')) {
+            selfItem.classList.remove('like-active');
+        } else {
+            selfItem.classList.add('like-active');
+        }
     });
 });
 
