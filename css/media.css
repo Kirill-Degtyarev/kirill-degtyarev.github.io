@@ -135,9 +135,12 @@
         padding: 0;
     }
     .basket {
-        margin-top: 22px;
+        padding-top: 22px;
+        padding-bottom: 22px;
     }
     .basket-total {
+        background-color: inherit;
+        box-shadow: none;
         padding: 8px 16px;
     }
     .basket-product {
@@ -158,8 +161,12 @@
     .header__search {
         display: none;
     }
+    .modal-payment__footer,
+    .modal-delivery__footer input[type='submit'] {
+        width: 100%;
+    }
     .product-list__item:not(:last-child) {
-        padding-bottom: 5px;
+        padding-bottom: 16px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
     .product-list__item-body {
@@ -169,6 +176,7 @@
         display: block;
     }
     .item-body__amount {
+        margin-top: 12px;
         margin-right: 0;
         display: flex;
         align-items: center;

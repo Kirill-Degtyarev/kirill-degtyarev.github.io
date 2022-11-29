@@ -2,6 +2,13 @@ body {
     background-color: #6725a8;
 }
 
+.wrapper {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
 [class*='__container'] {
     max-width: 1440px;
     margin: 0px auto;
