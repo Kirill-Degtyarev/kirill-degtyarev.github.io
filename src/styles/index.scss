@@ -1,0 +1,40 @@
+body {
+  background: linear-gradient(180deg, #f3f3fb 0%, #fdfbfd 100%);
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 5px; /* width of the entire scrollbar */
+  scroll-margin-right: 10px;
+  scroll-margin-left: 10px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+  background: none; /* color of the tracking area */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 5px solid transparent;
+  background: #b7bdcb;
+  box-shadow: 4px 4px 15px rgba(112, 124, 151, 0.05),
+    2px 2px 10px rgba(112, 124, 151, 0.1),
+    1px 1px 50px rgba(112, 124, 151, 0.15);
+  border-radius: 10px;
+  height: 80px;
+  transition: 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888b94;
+}

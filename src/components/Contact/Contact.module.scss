@@ -1,0 +1,80 @@
+.contact {
+  display: contents;
+  max-height: 100%;
+  min-height: 100%;
+}
+.contact-body {
+  max-height: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+.contact-body__loader {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-search {
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 5px 20px;
+  margin-bottom: 11px;
+  border: 1px solid #2a8bf2;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.contact-search__body {
+  display: flex;
+  align-items: center;
+}
+
+.search-body__icon {
+  padding: 3px;
+  margin-right: 4px;
+}
+
+.search-body__input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  margin-left: 6px;
+  height: 30px;
+}
+
+.search-body__input input[type='text'] {
+  width: 90%;
+  font-size: 18px;
+  line-height: 144%;
+  color: #707c97;
+}
+
+.user-list {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: -5px;
+}
+
+.none-user {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 72%;
+  letter-spacing: 0.01em;
+  color: #0d1c2e;
+  font-weight: 600;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
